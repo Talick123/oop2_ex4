@@ -7,12 +7,12 @@ GameController::GameController()
 
 void GameController::startGame()
 {
-	sf::RenderWindow window(sf::VideoMode(610, 610), "Circle the Cat", sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(1280, 800), "Circle the Cat", sf::Style::Close);
 	GameBoard my_game;
 
 	while (window.isOpen())
 	{
-		window.clear();
+		window.clear(sf::Color(237, 237, 237));
 		my_game.draw(window);
 		window.display();
 
