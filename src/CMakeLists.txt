@@ -2,4 +2,5 @@
                                               "GameBoard.cpp"
                                               "GameController.cpp"
                                               "Board.cpp"
+                                              "Tile.cpp"
                                               )

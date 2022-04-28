@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "GameBoard.h"
+#include "macros.h"
 
 
 class GameController {
@@ -9,6 +10,8 @@ public:
 	GameController();
 	void startGame();
 private:
-	//void run(GameWindow &window);
+	void processEvents(sf::RenderWindow& window, GameBoard& gameBoard);
+	void update();
+	void render(sf::RenderWindow& window, GameBoard& gameBoard);
 
 };
