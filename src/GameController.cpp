@@ -23,10 +23,15 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 
 	if (auto event = sf::Event{}; window.pollEvent(event))
 	{
-		if (event.type == sf::Event::Closed)
+		switch (event.type)
+		{
+		case sf::Event::Closed:
 			window.close();
-		else
-			gameBoard.handleEvent(event);
+			break;
+		case sf::Event::MouseButtonReleased:
+			gameBoard.handleClick(event);
+			break;
+		}
 	}
 }
 

@@ -8,7 +8,7 @@ class GameBoard {
 public:
 	GameBoard();
 	void draw(sf::RenderWindow& window);
-	void handleEvent(const sf::Event& event);
+	void handleClick(const sf::Event& event);
 private:
 	Board m_board;
 };
