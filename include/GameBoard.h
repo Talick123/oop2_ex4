@@ -10,6 +10,16 @@ public:
 	void draw(sf::RenderWindow& window);
 	void handleClick(const sf::Event& event);
 private:
+	void setText();
+	void setNumOfMovesText();
+	void loadFont();
+	void updateNumOfMovesString();
+private:
 	Board m_board;
 	Cat m_cat;
+
+	//Noga: move to kind of "DataDisplay" class ?
+	sf::Text m_numOfMovesTitleText;
+	int m_numOfMoves;
+	sf::Font m_font; //Noga: move to singleton 'Resources' class
 };

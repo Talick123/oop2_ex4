@@ -27,12 +27,16 @@ void Board::draw(sf::RenderWindow& window)
 		}
 }
 
-void Board::handleClick(const sf::Event& event)
+bool Board::handleClick(const sf::Event& event)
 {
 	for (int i = 0; i < 11; i++)
 		for (int j = 0; j < 11; j++)
 		{
 			if (m_tiles[i][j].isContain(event))
+			{
 				std::cout << "Click on tile. row: " << i << ", col: " << j << std::endl;
+				return true;
+			}
 		}
+	return false;
 }

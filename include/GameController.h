@@ -13,5 +13,4 @@ private:
 	void processEvents(sf::RenderWindow& window, GameBoard& gameBoard);
 	void update();
 	void render(sf::RenderWindow& window, GameBoard& gameBoard);
-
 };
