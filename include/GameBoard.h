@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "Board.h"
-
+#include "Cat.h"
 
 class GameBoard {
 public:
@@ -11,4 +11,5 @@ public:
 	void handleClick(const sf::Event& event);
 private:
 	Board m_board;
+	Cat m_cat;
 };

@@ -3,4 +3,5 @@
                                               "GameController.cpp"
                                               "Board.cpp"
                                               "Tile.cpp"
+                                              "Cat.cpp"
                                               )
