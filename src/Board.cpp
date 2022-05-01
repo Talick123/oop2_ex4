@@ -3,26 +3,23 @@
 Board::Board()
 	: m_tiles(11, std::vector<Tile>(11))
 {
-	int x, offsetY;
-	int padding = 10;
-	int totalTileSpace = TILE_RADIUS*2 + padding; 
-	
-	float BOARD_OFFSET_Y = (WINDOW_HEIGHT - totalTileSpace * 11 - 10) / 2;
+	int offsetX, offsetY;
 
 	for (int i = 0; i < 11; i++)
+	{
 		for (int j = 0; j < 11; j++)
 		{
-			x = i % 2 == 0 ? totalTileSpace * j + (totalTileSpace/2) : totalTileSpace * j; 
-			offsetY = totalTileSpace * i;
-
-
-			//float col_offsetX = (WINDOW_LENGTH - square_size * m_width) / 2;
+			offsetX = (i % 2 == 0) ? TOTAL_TILE_SIZE * j : TOTAL_TILE_SIZE * j + TILE_RADIUS;
+			offsetY = TOTAL_TILE_SIZE * i;
+			
+			float x = BOARD_OFFSET_X + offsetX;
 			float y = BOARD_OFFSET_Y + offsetY;
 
 			sf::Vector2f position(x, y);
 			m_tiles[i][j].setPosition(position);
 			//set neighbours
 		}
+	}
 }
 /*
 sf::Vector2f Board::createPosition(int row, int col, float square_size)

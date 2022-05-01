@@ -35,7 +35,8 @@ void GameBoard::setText()
 void GameBoard::setNumOfMovesText()
 {
 	m_numOfMovesTitleText.setFont(m_font);
-	m_numOfMovesTitleText.setPosition(sf::Vector2f(900.f, 30.f));
+	float offsetX = BOARD_AREA_LENGTH + 10;
+	m_numOfMovesTitleText.setPosition(sf::Vector2f(offsetX, 70.f));
 	m_numOfMovesTitleText.setFillColor(sf::Color(34, 34, 34));
 	m_numOfMovesTitleText.setCharacterSize(30);
 	updateNumOfMovesString();
