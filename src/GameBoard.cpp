@@ -19,8 +19,8 @@ void GameBoard::handleClick(const sf::Event& event)
 	{
 		m_numOfMoves++;
 		updateNumOfMovesString();
+		m_cat.handleClick();
 	}
-	m_cat.handleClick();
 
 	//check which part of gameboard event happened
 	//handle event in part of board

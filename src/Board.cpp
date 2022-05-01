@@ -3,39 +3,28 @@
 Board::Board()
 	: m_tiles(11, std::vector<Tile>(11))
 {
-	int offsetX, offsetY;
+	initBoard();
+}
 
+void Board::initBoard()
+{
+	int offsetX, offsetY;
+	float x, y;
 	for (int i = 0; i < 11; i++)
 	{
 		for (int j = 0; j < 11; j++)
 		{
 			offsetX = (i % 2 == 0) ? TOTAL_TILE_SIZE * j : TOTAL_TILE_SIZE * j + TILE_RADIUS;
 			offsetY = TOTAL_TILE_SIZE * i;
-			
-			float x = BOARD_OFFSET_X + offsetX;
-			float y = BOARD_OFFSET_Y + offsetY;
 
-			sf::Vector2f position(x, y);
-			m_tiles[i][j].setPosition(position);
+			x = BOARD_OFFSET_X + offsetX;
+			y = BOARD_OFFSET_Y + offsetY;
+
+			m_tiles[i][j].setPosition(sf::Vector2f(x,y));
 			//set neighbours
 		}
 	}
 }
-/*
-sf::Vector2f Board::createPosition(int row, int col, float square_size)
-{
-	sf::Vector2f position;
-	float xPos, yPos;
-
-	float col_offsetX = (WINDOW_W - square_size * m_width) / 2;
-	float col_offsetY = (BOARD_H - square_size * m_height) / 2;
-
-	xPos = (float)(col * (square_size) + col_offsetX);
-	yPos = (float)(row * (square_size) + col_offsetY);
-	position = { xPos, yPos };
-
-	return position;
-}*/
 
 void Board::draw(sf::RenderWindow& window)
 {

@@ -12,5 +12,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	bool handleClick(const sf::Event& event);
 private:
+	void initBoard();
+
 	std::vector<std::vector<Tile>> m_tiles;
 };
