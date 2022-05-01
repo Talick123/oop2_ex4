@@ -2,7 +2,7 @@
 #include "Tile.h"
 
 Tile::Tile()
-	:m_tile(sf::CircleShape(30.f)), m_blocked(false) //TODO: add to macros (radius)
+	:m_tile(sf::CircleShape((float)TILE_RADIUS)), m_blocked(false)
 {
 }
 

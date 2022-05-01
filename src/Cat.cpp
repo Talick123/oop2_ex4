@@ -1,7 +1,7 @@
 #include "Cat.h"
 
 Cat::Cat(sf::Vector2f position)
-	:m_triangle(sf::CircleShape(30.f, 3)) //Tali: to make a triangle : use circleshape with 3 points (second value) just saying //Noga: aaaahhhhhhhhhhhhhhhhhhh
+	:m_triangle(sf::CircleShape(30.f, 3))
 {
 	m_triangle.setPosition(position);
 	m_triangle.setFillColor(sf::Color::Blue);

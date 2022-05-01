@@ -2,3 +2,5 @@
 
 const int WINDOW_HEIGHT = 900;
 const int WINDOW_LENGTH = 1450;
+
+const int TILE_RADIUS = 30;

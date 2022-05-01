@@ -41,7 +41,7 @@ void GameController::update()
 
 void GameController::render(sf::RenderWindow& window, GameBoard& gameBoard)
 {
-	window.clear(sf::Color(237, 237, 237));
+	window.clear(sf::Color(13, 125, 87));
 	gameBoard.draw(window);
 	window.display();
 }

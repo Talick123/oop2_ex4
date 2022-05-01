@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <map>
+#include "macros.h"
 
 class Tile {
 public:
@@ -13,5 +14,5 @@ public:
 private:
 	sf::CircleShape m_tile;
 	bool m_blocked;
-	std::map<int, int> m_neighbours;
+	//std::map<int, int> m_neighbours;
 };
