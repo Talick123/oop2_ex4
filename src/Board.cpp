@@ -21,10 +21,22 @@ void Board::initBoard()
 			y = BOARD_OFFSET_Y + offsetY;
 
 			m_tiles[i][j].setPosition(sf::Vector2f(x,y));
-			//set neighbours
+		}
+	}
+	//setNeighbours();
+}
+
+void Board::setNeighbours()
+{
+	for (int i = 0; i < 11; i++)
+	{
+		for (int j = 0; j < 11; j++)
+		{
+
 		}
 	}
 }
+
 
 void Board::draw(sf::RenderWindow& window)
 {

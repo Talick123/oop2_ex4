@@ -22,4 +22,8 @@ private:
 	sf::Text m_numOfMovesTitleText;
 	int m_numOfMoves;
 	sf::Font m_font; //Noga: move to singleton 'Resources' class
+
+	sf::Sprite m_undo;
+	sf::Texture m_t;
+
 };

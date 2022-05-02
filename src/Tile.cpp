@@ -20,3 +20,4 @@ bool Tile::isContain(sf::Event event)
 {
 	return m_tile.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
 }
+

@@ -4,6 +4,13 @@ GameBoard::GameBoard()
 	:m_board(), m_cat(sf::Vector2f(35.f,0.f)), m_numOfMoves(0)
 {
 	setText();
+
+	//UNDO BUTTON
+
+	m_t.loadFromFile("undo.png");
+	m_undo.setTexture(m_t);
+	m_undo.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 200));
+	m_undo.setScale(sf::Vector2f(0.15, 0.15));
 }
 
 void GameBoard::draw(sf::RenderWindow& window)
@@ -11,6 +18,7 @@ void GameBoard::draw(sf::RenderWindow& window)
 	m_board.draw(window);
 	m_cat.draw(window);
 	window.draw(m_numOfMovesTitleText);
+	window.draw(m_undo);
 }
 
 void GameBoard::handleClick(const sf::Event& event)

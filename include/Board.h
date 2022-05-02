@@ -13,6 +13,6 @@ public:
 	bool handleClick(const sf::Event& event);
 private:
 	void initBoard();
-
+	void setNeighbours();
 	std::vector<std::vector<Tile>> m_tiles;
 };

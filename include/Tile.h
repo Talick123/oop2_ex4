@@ -15,4 +15,5 @@ private:
 	sf::CircleShape m_tile;
 	bool m_blocked;
 	//std::map<int, int> m_neighbours;
+	
 };

@@ -5,3 +5,4 @@
 
 # fonts
 configure_file ("fonts/YatraOne.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("undo.png" ${CMAKE_BINARY_DIR} COPYONLY)
