@@ -15,8 +15,6 @@ void GameController::startGame()
 
 	while (window.isOpen())
 	{
-		std::cout << "curr page : " << int(m_currPage) << "\n";
-
 		processEvents(window, gameBoard);
 		update();
 		render(window, gameBoard); //maybe put first
@@ -29,8 +27,7 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 	{
 		if (event.type == sf::Event::Closed)
 			window.close();
-		
-		std::cout << "curr page : " << int(m_currPage) << "\n";
+
 		switch (m_currPage)
 		{
 		case Page::GameBoard:
@@ -43,7 +40,7 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 			break;
 		}
 	}
-	
+
 }
 
 void GameController::gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoard)
@@ -84,8 +81,6 @@ void GameController::render(sf::RenderWindow& window, GameBoard& gameBoard)
 {
 	window.clear(sf::Color(224, 235, 229));
 	drawCurrPage(window, gameBoard);
-	std::cout << "curr page : " << int(m_currPage) << "\n";
-
 	window.display();
 }
 
@@ -105,7 +100,7 @@ void GameController::drawCurrPage(sf::RenderWindow& window, GameBoard& gameBoard
 	default:
 		break;
 	}
-	
+
 }
 
 void GameController::initPages()
@@ -113,7 +108,7 @@ void GameController::initPages()
 	m_levelComplete = sf::RectangleShape(sf::Vector2f(float(WINDOW_LENGTH), float(WINDOW_HEIGHT)));
 	m_levelComplete.setFillColor(sf::Color(179, 255, 179));
 	//m_levelComplete.setTexture(Resources::instance().getLevelCompleted());
-	
+
 	m_levelLost = sf::RectangleShape(sf::Vector2f(float(WINDOW_LENGTH), float(WINDOW_HEIGHT)));
 	m_levelLost.setFillColor(sf::Color(102, 0, 0));
 	//m_levelLost.setTexture(Resources::instance().getLevelLost());
@@ -133,4 +128,3 @@ void GameController::updateLose(GameBoard& gameBoard)
 	m_currPage = Page::UserLose;
 	//create new level or restart level
 }
-
