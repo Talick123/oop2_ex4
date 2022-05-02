@@ -3,15 +3,14 @@
 GameBoard::GameBoard()
 	:m_board(), m_cat(sf::Vector2f(35.f,0.f)), m_numOfMoves(0)
 {
-	setText();
+	setNumOfMovesText();
 
-	//UNDO BUTTON
-
-	m_t.loadFromFile("undo.png");
-	m_undo.setTexture(m_t);
-	m_undo.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 200));
-	m_undo.setScale(sf::Vector2f(0.15, 0.15));
+	//UNDO BUTTON 
+	//Noga: maybe because we have 2 buttons we can create tiny tiny tinyyyy class to them - with sprite member and handle click ? :)
+	setBtns();
 }
+
+//-----------------------------------------------------------------
 
 void GameBoard::draw(sf::RenderWindow& window)
 {
@@ -20,6 +19,8 @@ void GameBoard::draw(sf::RenderWindow& window)
 	window.draw(m_numOfMovesTitleText);
 	window.draw(m_undo);
 }
+
+//-----------------------------------------------------------------
 
 void GameBoard::handleClick(const sf::Event& event)
 {
@@ -34,15 +35,11 @@ void GameBoard::handleClick(const sf::Event& event)
 	//handle event in part of board
 }
 
-void GameBoard::setText()
-{
-	loadFont();
-	setNumOfMovesText();
-}
+//-----------------------------------------------------------------
 
 void GameBoard::setNumOfMovesText()
 {
-	m_numOfMovesTitleText.setFont(m_font);
+	m_numOfMovesTitleText.setFont(*(Resources::instance().getFont()));
 	float offsetX = BOARD_AREA_LENGTH + 10;
 	m_numOfMovesTitleText.setPosition(sf::Vector2f(offsetX, 70.f));
 	m_numOfMovesTitleText.setFillColor(sf::Color(34, 34, 34));
@@ -50,13 +47,33 @@ void GameBoard::setNumOfMovesText()
 	updateNumOfMovesString();
 }
 
-void GameBoard::loadFont()
+//-----------------------------------------------------------------
+
+void GameBoard::setBtns()
 {
-	if (!m_font.loadFromFile("YatraOne.ttf")) 
-	{
-		std::cerr << "error loading font from file";
-	}
+	//set undo button
+	setUndoBtn();
+	//set reset level button
+	setResetLevelBtn();
 }
+
+//-----------------------------------------------------------------
+
+void GameBoard::setUndoBtn()
+{
+	m_undo.setTexture(*(Resources::instance().getUndoTexture()));
+	m_undo.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 200));
+	m_undo.setScale(sf::Vector2f(0.15, 0.15));
+}
+
+//-----------------------------------------------------------------
+
+void GameBoard::setResetLevelBtn()
+{
+	//TODO: you kknow... etc etc
+}
+
+//-----------------------------------------------------------------
 
 void GameBoard::updateNumOfMovesString()
 {

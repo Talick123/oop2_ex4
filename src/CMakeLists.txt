@@ -4,4 +4,7 @@
                                               "Board.cpp"
                                               "Tile.cpp"
                                               "Cat.cpp"
+
+                                              "Resources.cpp"
+
                                               )
