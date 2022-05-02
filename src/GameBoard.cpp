@@ -35,6 +35,12 @@ void GameBoard::handleClick(const sf::Event& event)
 	//handle event in part of board
 }
 
+void GameBoard::resetMoves()
+{
+	m_numOfMoves = 0;
+	updateNumOfMovesString(); //TODO: ?
+}
+
 //-----------------------------------------------------------------
 
 void GameBoard::setNumOfMovesText()

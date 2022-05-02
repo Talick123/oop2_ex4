@@ -11,6 +11,8 @@ public:
 	GameBoard();
 	void draw(sf::RenderWindow& window);
 	void handleClick(const sf::Event& event);
+
+	void resetMoves();
 private:
 	void setNumOfMovesText();
 	void setBtns();
