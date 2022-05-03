@@ -11,8 +11,8 @@ public:
 	Board();
 	void draw(sf::RenderWindow& window);
 	bool handleClick(const sf::Event& event);
+	Tile& at(int row, int col);
 private:
 	void initBoard();
-	void setNeighbours();
 	std::vector<std::vector<Tile>> m_tiles;
 };

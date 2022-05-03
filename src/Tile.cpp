@@ -22,6 +22,11 @@ bool Tile::isContain(sf::Event event)
 	return m_tile.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
 }
 
+bool Tile::isBlocked()
+{
+	return m_blocked;
+}
+
 void Tile::blockTile()
 {
 	m_tile.setFillColor(sf::Color(184, 221, 214));

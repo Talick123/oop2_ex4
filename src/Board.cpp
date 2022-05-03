@@ -8,35 +8,19 @@ Board::Board()
 
 void Board::initBoard()
 {
-	int offsetX, offsetY;
 	float x, y;
+
 	for (int i = 0; i < 11; i++)
 	{
 		for (int j = 0; j < 11; j++)
 		{
-			offsetX = (i % 2 == 0) ? TOTAL_TILE_SIZE * j : TOTAL_TILE_SIZE * j + TILE_RADIUS;
-			offsetY = TOTAL_TILE_SIZE * i;
+			x = (i % 2 == 0) ? TOTAL_TILE_SIZE * j : TOTAL_TILE_SIZE * j + TILE_RADIUS;
+			y = TOTAL_TILE_SIZE * i;
 
-			x = BOARD_OFFSET_X + offsetX;
-			y = BOARD_OFFSET_Y + offsetY;
-
-			m_tiles[i][j].setPosition(sf::Vector2f(x,y));
-		}
-	}
-	//setNeighbours();
-}
-
-void Board::setNeighbours()
-{
-	for (int i = 0; i < 11; i++)
-	{
-		for (int j = 0; j < 11; j++)
-		{
-
+			m_tiles[i][j].setPosition(sf::Vector2f(x + BOARD_OFFSET_X, y + BOARD_OFFSET_Y));
 		}
 	}
 }
-
 
 void Board::draw(sf::RenderWindow& window)
 {
@@ -60,4 +44,9 @@ bool Board::handleClick(const sf::Event& event)
 			}
 		}
 	return false;
+}
+
+Tile& Board::at(int row, int col)
+{
+	return m_tiles[row][col];
 }

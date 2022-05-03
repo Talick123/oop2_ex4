@@ -12,6 +12,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	bool isContain(sf::Event event);
 
+	bool isBlocked();
 	//Noga: I know we can create function and send to it bool argument but i think its more understandable like that (this?),  yes? no? are you with me?
 	void blockTile();
 	void unBlockTile();

@@ -6,6 +6,10 @@
 #include "Board.h"
 #include "Cat.h"
 
+#include <queue>
+#include <utility>
+#include <vector>
+
 class GameBoard {
 public:
 	GameBoard();
@@ -21,7 +25,8 @@ private:
 	
 	void updateNumOfMovesString();
 
-	
+	void moveCat();
+	bool isValid(bool visited, int row, int col);
 
 private:
 	Board m_board;
