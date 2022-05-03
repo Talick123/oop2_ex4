@@ -57,7 +57,6 @@ void GameBoard::moveCat()
 
 	bool reached_end = false;				//we have not found the end yet
 
-
 	q.push(m_cat.getLocation());			//setting starting location as cats location
 	visited[q.front().first][q.front().second] = true;	//setting cats location as visited
 
@@ -81,7 +80,6 @@ void GameBoard::moveCat()
 		//checking neighbours
 		for (int i = 0; i < 6; i++)
 		{
-
 			int adjX = (x % 2 == 0) ? x + D_VEC_ROW_E[i] : x + D_VEC_ROW_O[i];
 			int adjY = (x % 2 == 0) ? y + D_VEC_COL_E[i] : y + D_VEC_COL_O[i];
 
@@ -90,7 +88,6 @@ void GameBoard::moveCat()
 				q.push({ adjX, adjY });
 				visited[adjX][adjY] = true;
 				prev[adjX][adjY] = tile;
-
 			}
 		}
 	}
@@ -109,10 +106,9 @@ void GameBoard::moveCat()
 			path.pop_back();
 			m_cat.setLocation(path.back());
 		}
-
 	}
-
 }
+
 bool GameBoard::isValid(bool visited, int row, int col)
 {
 	if (row < 0 || col < 0 || row >= SIZE || col >= SIZE
