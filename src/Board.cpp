@@ -46,7 +46,7 @@ bool Board::handleClick(const sf::Event& event)
 	return false;
 }
 
-Tile& Board::at(int row, int col)
+Tile& Board::at(int row, int col) //maybe make this const so they cant change it (const on return)
 {
 	return m_tiles[row][col];
 }

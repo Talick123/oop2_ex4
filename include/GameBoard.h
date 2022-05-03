@@ -26,7 +26,8 @@ private:
 	void updateNumOfMovesString();
 
 	void moveCat();
-	bool isValid(bool visited, int row, int col);
+	bool BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[SIZE][SIZE]);
+	bool isValid(int row, int col);
 
 private:
 	Board m_board;
