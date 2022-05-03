@@ -1,7 +1,17 @@
 #include "GameBoard.h"
 
 GameBoard::GameBoard()
-	:m_board(), /*m_cat(sf::Vector2f(35.f, 0.f))*/ m_cat(std::pair<int,int>(5, 4)) , m_numOfMoves(0)
+	:m_board(10), /*m_cat(sf::Vector2f(35.f, 0.f))*/ m_cat(std::pair<int, int>(5, 4)), m_numOfMoves(0)
+{
+	setNumOfMovesText();
+
+	//UNDO BUTTON 
+	//Noga: maybe because we have 2 buttons we can create tiny tiny tinyyyy class to them - with sprite member and handle click ? :)
+	setBtns();
+}
+
+GameBoard::GameBoard(int numOfBlockedTiles)
+	:m_board(numOfBlockedTiles), /*m_cat(sf::Vector2f(35.f, 0.f))*/ m_cat(std::pair<int,int>(5, 4)) , m_numOfMoves(0)
 {
 	setNumOfMovesText();
 

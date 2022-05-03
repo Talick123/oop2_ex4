@@ -1,9 +1,22 @@
 #include "Board.h"
 
+const int DEFAULT_LEVEL = 10;
+
 Board::Board()
 	: m_tiles(11, std::vector<Tile>(11))
 {
 	initBoard();
+	randomizeLevel(DEFAULT_LEVEL);
+}
+
+Board::Board(int numOfBlockedTiles)
+	: m_tiles(11, std::vector<Tile>(11))
+{
+	initBoard();
+	//srand(17); //Noga: we use rand method, do we need the srand thing? 
+
+	randomizeLevel(numOfBlockedTiles);
+
 }
 
 void Board::initBoard()
@@ -18,6 +31,22 @@ void Board::initBoard()
 			y = TOTAL_TILE_SIZE * i;
 
 			m_tiles[i][j].setPosition(sf::Vector2f(x + BOARD_OFFSET_X, y + BOARD_OFFSET_Y));
+		}
+	}
+}
+
+void Board::randomizeLevel(int numOfBlockedTiles)
+{
+	int counter = 0;
+	while (counter < numOfBlockedTiles) { //looping while 3 distinct cells are not set to true
+		int rRow = rand() % 11;
+		int rCol = rand() % 11;
+
+		std::cout << "x: " << rRow << " y: " << rCol << std::endl;
+
+		if (!m_tiles[rRow][rCol].isBlocked()) {
+			m_tiles[rRow][rCol].blockTile();
+			counter++; //increasing the counter only when a new cell is set to true
 		}
 	}
 }
