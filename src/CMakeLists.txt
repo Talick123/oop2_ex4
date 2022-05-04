@@ -4,6 +4,7 @@
                                               "Board.cpp"
                                               "Tile.cpp"
                                               "Cat.cpp"
+                                              "DataDisplay.cpp"
 
                                               "Resources.cpp"
 
