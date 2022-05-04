@@ -17,7 +17,8 @@ public:
 private:
 	void setBtns();
 	void setUndoBtn();
-	//void setResetLevelBtn();
+	void setResetLevelBtn();
+	void setNewGameButton();
 private:
 	sf::Text m_numOfMovesTitleText;
 	

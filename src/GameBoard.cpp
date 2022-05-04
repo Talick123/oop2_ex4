@@ -3,21 +3,13 @@
 GameBoard::GameBoard()
 	:m_board(10), /*m_cat(sf::Vector2f(35.f, 0.f))*/ m_cat(std::pair<int, int>(5, 4)), m_numOfMoves(0)
 {
-	m_dataDisplay.setNumOfMovesText(0);
-
-	//UNDO BUTTON 
-	//Noga: maybe because we have 2 buttons we can create tiny tiny tinyyyy class to them - with sprite member and handle click ? :)
-	//setBtns();
+	m_dataDisplay.setNumOfMovesText(m_numOfMoves); // 0 = num of moves
 }
 
 GameBoard::GameBoard(int numOfBlockedTiles)
 	:m_board(numOfBlockedTiles), /*m_cat(sf::Vector2f(35.f, 0.f))*/ m_cat(std::pair<int,int>(5, 4)) , m_numOfMoves(0)
 {
-	m_dataDisplay.setNumOfMovesText(0);
-
-	//UNDO BUTTON 
-	//Noga: maybe because we have 2 buttons we can create tiny tiny tinyyyy class to them - with sprite member and handle click ? :)
-	//setBtns();
+	m_dataDisplay.setNumOfMovesText(m_numOfMoves);
 }
 
 //-----------------------------------------------------------------
@@ -27,8 +19,6 @@ void GameBoard::draw(sf::RenderWindow& window)
 	m_board.draw(window);
 	m_cat.draw(window);
 	m_dataDisplay.draw(window);
-	//window.draw(m_numOfMovesTitleText);
-	window.draw(m_undo);
 }
 
 //-----------------------------------------------------------------
@@ -81,7 +71,6 @@ void GameBoard::moveCat()
 
 	}
 	//else move cat accordingly (maybe we reached end)
-
 }
 
 //-----------------------------------------------------------------
@@ -148,50 +137,6 @@ void GameBoard::resetMoves()
 }
 
 //-----------------------------------------------------------------
-
-//void GameBoard::setNumOfMovesText()
-//{
-//	m_numOfMovesTitleText.setFont(*(Resources::instance().getFont()));
-//	float offsetX = BOARD_AREA_LENGTH + 10;
-//	m_numOfMovesTitleText.setPosition(sf::Vector2f(offsetX, 70.f));
-//	m_numOfMovesTitleText.setFillColor(sf::Color(41, 86, 79));
-//	m_numOfMovesTitleText.setCharacterSize(30);
-//	updateNumOfMovesString();
-//}
-
-//-----------------------------------------------------------------
-
-void GameBoard::setBtns()
-{
-	//set undo button
-	setUndoBtn();
-	//set reset level button
-	setResetLevelBtn();
-}
-
-//-----------------------------------------------------------------
-
-void GameBoard::setUndoBtn()
-{
-	m_undo.setTexture(*(Resources::instance().getUndoTexture()));
-	m_undo.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 200));
-	m_undo.setScale(sf::Vector2f(0.15, 0.15));
-}
-
-//-----------------------------------------------------------------
-
-void GameBoard::setResetLevelBtn()
-{
-	//TODO: you kknow... etc etc
-}
-
-//-----------------------------------------------------------------
-
-//void GameBoard::updateNumOfMovesString()
-//{
-//	m_numOfMovesTitleText.setString("Number of Moves:\n" + std::to_string(m_numOfMoves));
-//}
-
 
 //
 //void GameBoard::moveCat()

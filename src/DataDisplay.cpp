@@ -25,19 +25,22 @@ void DataDisplay::setNumOfMovesText(unsigned int moves)
 
 void DataDisplay::updateNumOfMovesString(unsigned int moves)
 {
-	m_numOfMovesTitleText.setString("Number of Moves:\n" + std::to_string(moves));
+	m_numOfMovesTitleText.setString("Moves: " + std::to_string(moves));
 }
 
 void DataDisplay::setBtns()
 {
 	//set undo button
-	setUndoBtn();
+	//setUndoBtn();
+	
 	//set reset level button
 	//setResetLevelBtn();
-	
+
+	//set new game button
+	setNewGameButton();
 }
 
-void DataDisplay::setUndoBtn()
+void DataDisplay::setNewGameButton()
 {
 	m_newGameBtn.setTexture(*(Resources::instance().getUndoTexture()));
 	m_newGameBtn.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 200));

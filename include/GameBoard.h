@@ -19,11 +19,8 @@ public:
 	void handleClick(const sf::Event& event);
 
 	void resetMoves();
-private:
-	void setBtns();
-	void setUndoBtn();
-	void setResetLevelBtn();
-	
+
+private:	
 	void moveCat();
 	bool BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[SIZE][SIZE]);
 	bool isValid(int row, int col);
@@ -34,6 +31,4 @@ private:
 	DataDisplay m_dataDisplay;
 
 	int m_numOfMoves;
-
-	sf::Sprite m_undo;
 };
