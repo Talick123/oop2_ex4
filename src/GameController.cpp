@@ -11,7 +11,7 @@ GameController::GameController()
 void GameController::startGame()
 {
 	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "Circle the Cat", sf::Style::Close);
-	GameBoard gameBoard; //TODO: add here starting board (blocked tiles, place of cat)
+	GameBoard gameBoard(14); //TODO: add here starting board (blocked tiles, place of cat)
 
 	while (window.isOpen())
 	{
@@ -53,7 +53,9 @@ void GameController::gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoar
 	case sf::Event::KeyReleased:
 	{
 		if (event.key.code == sf::Keyboard::W)
+		{
 			updateWin(gameBoard);
+		}
 		else if (event.key.code == sf::Keyboard::L)
 			updateLose(gameBoard);
 		break;
@@ -116,7 +118,8 @@ void GameController::initPages()
 
 void GameController::updateWin(GameBoard& gameBoard)
 {
-	gameBoard.resetMoves();
+	//gameBoard.resetMoves();
+	gameBoard = GameBoard(2);
 	m_currPage = Page::UserWin;
 	//create new level or restart level
 

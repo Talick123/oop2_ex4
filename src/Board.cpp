@@ -42,8 +42,6 @@ void Board::randomizeLevel(int numOfBlockedTiles)
 		int rRow = rand() % 11;
 		int rCol = rand() % 11;
 
-		std::cout << "x: " << rRow << " y: " << rCol << std::endl;
-
 		if (!m_tiles[rRow][rCol].isBlocked()) {
 			m_tiles[rRow][rCol].blockTile();
 			counter++; //increasing the counter only when a new cell is set to true

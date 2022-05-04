@@ -65,6 +65,7 @@ void GameBoard::moveCat()
 
 	if (BFS(end_tile, prev))
 	{
+		//if end_tile == m_cat.getLocation() then u lost
 		std::vector<std::pair<int, int>> path;
 		
 		for (auto curr = end_tile; curr != NO_PARENT; curr = prev[curr.first][curr.second])
