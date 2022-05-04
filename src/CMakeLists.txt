@@ -5,6 +5,8 @@
                                               "Tile.cpp"
                                               "Cat.cpp"
                                               "DataDisplay.cpp"
+                                              "Button.cpp"
+                                              "NewGameButton.cpp"
 
                                               "Resources.cpp"
 

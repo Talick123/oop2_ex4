@@ -1,0 +1,26 @@
+#pragma once
+
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include "macros.h"
+#include "Resources.h"
+#include "NewGameButton.h"
+
+class DataDisplay {
+public:
+	DataDisplay();
+	void draw(sf::RenderWindow& window);
+	//void handleClick();
+
+	void setNumOfMovesText(unsigned int moves);
+	void updateNumOfMovesString(unsigned int moves);
+private:
+	void setBtns();
+	void setUndoBtn();
+	//void setResetLevelBtn();
+private:
+	sf::Text m_numOfMovesTitleText;
+	
+	//Game Buttons
+	NewGameButton m_newGameBtn;
+};

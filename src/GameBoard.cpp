@@ -7,7 +7,7 @@ GameBoard::GameBoard()
 
 	//UNDO BUTTON 
 	//Noga: maybe because we have 2 buttons we can create tiny tiny tinyyyy class to them - with sprite member and handle click ? :)
-	setBtns();
+	//setBtns();
 }
 
 GameBoard::GameBoard(int numOfBlockedTiles)
@@ -17,7 +17,7 @@ GameBoard::GameBoard(int numOfBlockedTiles)
 
 	//UNDO BUTTON 
 	//Noga: maybe because we have 2 buttons we can create tiny tiny tinyyyy class to them - with sprite member and handle click ? :)
-	setBtns();
+	//setBtns();
 }
 
 //-----------------------------------------------------------------
