@@ -69,6 +69,7 @@ bool Board::handleClick(const sf::Event& event)
 				if (m_tiles[i][j].isBlocked()) return false;
 
 				m_tiles[i][j].blockTile();
+				m_tiles[i][j].clicked();
 				return true;
 			}
 		}
@@ -88,7 +89,6 @@ void Board::handleHover(sf::Vector2f location)
 			else
 			{
 				at(i, j).isBlocked() ? at(i, j).setFillColor(sf::Color(184, 221, 214)) : at(i, j).setFillColor(sf::Color(230, 183, 148));
-
 			}
 		}
 	}

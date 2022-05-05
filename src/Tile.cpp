@@ -2,7 +2,7 @@
 #include "Tile.h"
 
 Tile::Tile()
-	:m_tile(sf::CircleShape((float)TILE_RADIUS)), m_blocked(false)
+	:m_tile(sf::CircleShape((float)TILE_RADIUS)), m_blocked(false), m_audio(Resources::instance().getAudioClick())
 {
 	m_tile.setFillColor(sf::Color(230, 183, 148));
 }
@@ -49,3 +49,7 @@ void Tile::unBlockTile()
 	m_blocked = false;
 }
 
+void Tile::clicked()
+{
+	m_audio.playMusic();
+}

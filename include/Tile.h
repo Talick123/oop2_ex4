@@ -4,6 +4,8 @@
 #include <map>
 #include "macros.h"
 
+#include "Audio.h"
+
 class Tile {
 public:
 	Tile();
@@ -18,9 +20,11 @@ public:
 	//Noga: I know we can create function and send to it bool argument but i think its more understandable like that (this?),  yes? no? are you with me?
 	void blockTile();
 	void unBlockTile();
+	void clicked();
 private:
 	sf::CircleShape m_tile;
 	bool m_blocked;
 	//std::map<int, int> m_neighbours;
+	Audio m_audio;
 	
 };

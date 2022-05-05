@@ -5,6 +5,7 @@ Resources::Resources()
 	loadFont();
 	loadUndoTexture();
 	loadNewGameTexture();
+	loadAudioClick();
 }
 
 
@@ -46,6 +47,11 @@ sf::Texture* Resources::getNewGameTexture()
 	return &m_newGameTexture;
 }
 
+sf::SoundBuffer* Resources::getAudioClick()
+{
+	return &m_audioClick;
+}
+
 
 
 
@@ -77,5 +83,13 @@ void Resources::loadNewGameTexture()
 	if (!m_newGameTexture.loadFromFile("new-game.png"))
 	{
 		std::cerr << "error loading home button textures from file";
+	}
+}
+
+void Resources::loadAudioClick()
+{
+	if (!m_audioClick.loadFromFile("click.wav"))
+	{
+		std::cerr << "error loading game music from file";
 	}
 }

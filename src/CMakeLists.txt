@@ -9,5 +9,5 @@
                                               "NewGameButton.cpp"
 
                                               "Resources.cpp"
-
+                                              "Audio.cpp"
                                               )

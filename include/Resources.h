@@ -17,7 +17,7 @@ public:
 	sf::Font* getFont();
 	sf::Texture* getUndoTexture();
 	sf::Texture* getNewGameTexture();
-	
+	sf::SoundBuffer* getAudioClick();
 
 private:
 	Resources();
@@ -28,6 +28,7 @@ private:
 	void loadFont();
 	void loadUndoTexture();
 	void loadNewGameTexture();
+	void loadAudioClick();
 
 	//======Members==========
 
@@ -39,5 +40,5 @@ private:
 	sf::Texture m_newGameTexture;
 
 	//Audio
-	
+	sf::SoundBuffer m_audioClick;
 };
