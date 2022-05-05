@@ -10,10 +10,12 @@ class DataDisplay {
 public:
 	DataDisplay();
 	void draw(sf::RenderWindow& window);
-	//void handleClick();
+	Btns handleClick(sf::Event event);
 
 	void setNumOfMovesText(unsigned int moves);
 	void updateNumOfMovesString(unsigned int moves);
+	
+
 private:
 	void setBtns();
 	void setUndoBtn();

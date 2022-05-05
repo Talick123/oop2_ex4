@@ -13,6 +13,17 @@ void DataDisplay::draw(sf::RenderWindow& window)
 	m_newGameBtn.draw(window);
 }
 
+Btns DataDisplay::handleClick(sf::Event event)
+{
+	if (m_newGameBtn.isContain(event))
+	{
+		return Btns::NewGame;
+	}
+	//else if undo............
+
+	else return Btns::None;
+}
+
 void DataDisplay::setNumOfMovesText(unsigned int moves)
 {
 	m_numOfMovesTitleText.setFont(*(Resources::instance().getFont()));

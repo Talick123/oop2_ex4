@@ -12,6 +12,9 @@ public:
 	void draw(sf::RenderWindow& window);
 	virtual void handleClick() = 0;
 
+	//get
+	bool isContain(sf::Event event) const;
+
 	//set sprite
 	void setPosition(sf::Vector2f pos);
 	void setColor(sf::Color color);

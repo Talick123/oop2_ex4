@@ -23,16 +23,18 @@ void GameBoard::draw(sf::RenderWindow& window)
 
 //-----------------------------------------------------------------
 
-void GameBoard::handleClick(const sf::Event& event)
+Btns GameBoard::handleClick(const sf::Event& event)
 {
 	if (m_board.handleClick(event))
 	{
 		moveCat();
 		m_numOfMoves++;
 		m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
+		return Btns::None;
 		//m_cat.handleClick();
 	}
-
+	return m_dataDisplay.handleClick(event); 
+	
 	//check which part of gameboard event happened
 	//handle event in part of board
 }

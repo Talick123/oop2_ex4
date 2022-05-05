@@ -47,7 +47,7 @@ void Cat::setLocation(std::pair<int, int> location)
 void Cat::setCurrLocation(std::pair<int, int> newDest)
 {
 	m_location = newDest;
-	std::cout << "set location " << newDest.first << " " << newDest.second << std::endl;
+	//std::cout << "set location " << newDest.first << " " << newDest.second << std::endl;
 	auto x = (newDest.first % 2 == 0) ? TOTAL_TILE_SIZE * newDest.second : TOTAL_TILE_SIZE * newDest.second + TILE_RADIUS;
 	auto y = TOTAL_TILE_SIZE * newDest.first;
 
@@ -144,10 +144,6 @@ void Cat::setDirection()
 
 bool Cat::checkStop()
 {
-	std::cout << abs(m_triangle.getPosition().x - m_currLocation.x) << " "
-		<< abs(m_triangle.getPosition().y - m_currLocation.y) << std::endl;
-
-
 	if ((abs(m_triangle.getPosition().x - m_currLocation.x) < 10 &&
 		abs(m_triangle.getPosition().y - m_currLocation.y) < 10))
 	{

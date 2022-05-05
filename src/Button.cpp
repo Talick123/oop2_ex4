@@ -12,6 +12,11 @@ void Button::draw(sf::RenderWindow& window)
 	window.draw(m_button);
 }
 
+bool Button::isContain(sf::Event event) const
+{
+	return m_button.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
+}
+
 void Button::setPosition(sf::Vector2f pos)
 {
 	m_button.setPosition(pos);

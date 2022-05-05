@@ -48,8 +48,19 @@ void GameController::gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoar
 	switch (event.type)
 	{
 	case sf::Event::MouseButtonReleased:
-		gameBoard.handleClick(event);
-		break;
+	{
+		Btns clicked = gameBoard.handleClick(event);
+		switch (clicked)
+		{
+		case Btns::NewGame:
+			gameBoard = GameBoard(generateLevelDifficulty());
+			break;
+		case Btns::Undo:
+		case Btns::Reset:
+		default:
+			break;
+		}
+	}
 	case sf::Event::KeyReleased:
 	{
 		if (event.key.code == sf::Keyboard::W)
