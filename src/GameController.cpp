@@ -53,7 +53,7 @@ void GameController::gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoar
 		switch (clicked)
 		{
 		case Btns::NewGame:
-			gameBoard = GameBoard(generateLevelDifficulty());
+			startNewLevel(gameBoard);
 			break;
 		case Btns::Undo:
 		case Btns::Reset:
@@ -135,9 +135,7 @@ void GameController::updateWin(GameBoard& gameBoard)
 	//gameBoard.resetMoves();
 	m_currPage = Page::UserWin;
 	m_numOfLevelsComplete += 1;
-	unsigned int n = generateLevelDifficulty();
-	std::cout << n << std::endl;
-	gameBoard = GameBoard(n);
+	startNewLevel(gameBoard);
 
 	//create new level or restart level
 }
@@ -147,6 +145,11 @@ void GameController::updateLose(GameBoard& gameBoard)
 	gameBoard.resetMoves();
 	m_currPage = Page::UserLose;
 	//create new level or restart level
+}
+
+void GameController::startNewLevel(GameBoard& gameBoard)
+{
+	gameBoard = GameBoard(generateLevelDifficulty());
 }
 
 unsigned int GameController::generateLevelDifficulty() const
