@@ -19,6 +19,9 @@ public:
 	void setCurrLocation(std::pair<int, int> newDest);
 
 	void update(float deltaTime);
+
+	bool isContain(sf::Event event);
+	bool isStoped();
 private:
 	sf::Vector2f getCatDirection(float deltaTime);
 	void setDirection();
@@ -31,5 +34,6 @@ private:
 	sf::Vector2f m_currLocation; //destination (in pixels)
 	sf::Vector2f m_oldLocation; // (in pixels)
 	float m_speed; 
+	bool m_stop;
 
 };

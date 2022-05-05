@@ -8,7 +8,7 @@
 //}
 
 Cat::Cat(std::pair<int, int> location)
-	:m_triangle(sf::CircleShape(30.f, 3)), m_location(location), m_speed(60), m_direction(NONE)
+	:m_triangle(sf::CircleShape(30.f, 3)), m_location(location), m_speed(60), m_direction(NONE), m_stop(true)
 {
 	std::cout << "initial location " << location.first << " " << location.second << std::endl;
 	setLocation(location);
@@ -56,7 +56,6 @@ void Cat::setCurrLocation(std::pair<int, int> newDest)
 	m_currLocation.y = y + BOARD_OFFSET_Y;
 
 	setDirection();
-
 }
 
 void Cat::update(float deltaTime)
@@ -65,17 +64,26 @@ void Cat::update(float deltaTime)
 	bool stop = true;
 	if (!checkStop() && m_direction != NONE)
 	{
+		m_stop = false;
 		direction = getCatDirection(deltaTime);
-		//movement = { 0.5, 0.1 };
-		//std::cout << direction.x << " " << direction.y << std::endl;
-		//std::cout << deltaTime << std::endl;
+		//animation here
 	}
 	else
 	{
-		stop = false;
+		m_stop = true;
 	}
 	
 	m_triangle.move(direction);
+}
+
+bool Cat::isContain(sf::Event event)
+{
+	return m_triangle.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
+}
+
+bool Cat::isStoped()
+{
+	return m_stop;
 }
 
 sf::Vector2f Cat::getCatDirection(float deltaTime)
@@ -119,25 +127,17 @@ void Cat::setDirection()
 	if (m_currLocation.x < m_oldLocation.x) //left
 	{
 		if (m_currLocation.y < m_oldLocation.y) //up
-		{
 			m_direction = LU;
-		}
 		else if (m_currLocation.y > m_oldLocation.y) //down
-		{
 			m_direction = LD;
-		}
 		else m_direction = L; //just left
 	}
 	else if (m_currLocation.x > m_oldLocation.x) //right
 	{
 		if (m_currLocation.y < m_oldLocation.y) //up
-		{
 			m_direction = RU;
-		}
 		else if (m_currLocation.y > m_oldLocation.y) //down
-		{
 			m_direction = RD;
-		}
 		else m_direction = R; //just right
 	}
 }

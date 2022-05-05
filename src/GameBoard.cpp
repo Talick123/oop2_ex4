@@ -26,7 +26,7 @@ void GameBoard::draw(sf::RenderWindow& window)
 
 Btns GameBoard::handleClick(const sf::Event& event)
 {
-	if (m_board.handleClick(event))
+	if (!isCatHere(event) && m_cat.isStoped() && m_board.handleClick(event))
 	{
 		moveCat();
 		m_numOfMoves++;
@@ -149,6 +149,10 @@ void GameBoard::placeCat()
 			counter++; //increasing the counter only when a new cell is set to true
 		}
 	}
+}
+bool GameBoard::isCatHere(sf::Event event)
+{
+	return m_cat.isContain(event);
 }
 //-----------------------------------------------------------------
 

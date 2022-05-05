@@ -25,6 +25,7 @@ private:
 	bool BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[SIZE][SIZE]);
 	bool isValid(int row, int col);
 	void placeCat();
+	bool isCatHere(sf::Event event);
 
 private:
 	Board m_board;
