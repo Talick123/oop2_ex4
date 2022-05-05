@@ -16,7 +16,7 @@ private:
 	void emmptyPageProcessEvents(sf::Event& event);
 
 	//update
-	void update();
+	void update(GameBoard& gameBoard);
 	
 	//render (draw)
 	void render(sf::RenderWindow& window, GameBoard& gameBoard);
@@ -46,4 +46,6 @@ private:
 
 	sf::RectangleShape m_levelComplete;
 	sf::RectangleShape m_levelLost; //Noga: ?
+
+	sf::Clock m_timer;
 };

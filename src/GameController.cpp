@@ -16,7 +16,7 @@ void GameController::startGame()
 	while (window.isOpen())
 	{
 		processEvents(window, gameBoard);
-		update();
+		update(gameBoard);
 		render(window, gameBoard); //maybe put first
 	}
 }
@@ -75,8 +75,11 @@ void GameController::emmptyPageProcessEvents(sf::Event& event)
 		}
 }
 
-void GameController::update()
+void GameController::update(GameBoard& gameBoard)
 {
+	sf::Time deltaTime = m_timer.restart();
+
+	gameBoard.update(deltaTime.asSeconds());
 }
 
 void GameController::render(sf::RenderWindow& window, GameBoard& gameBoard)

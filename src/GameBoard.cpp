@@ -66,7 +66,10 @@ void GameBoard::moveCat()
 		if (path.back() == m_cat.getLocation())
 		{
 			path.pop_back();
-			m_cat.setLocation(path.back());
+			//m_cat.setLocation(path.back());
+
+			m_cat.setCurrLocation(path.back());
+
 		}
 
 	}
@@ -134,6 +137,11 @@ void GameBoard::resetMoves()
 {
 	m_numOfMoves = 0;
 	m_dataDisplay.updateNumOfMovesString(0); //TODO: ?
+}
+
+void GameBoard::update(float deltaTime)
+{
+	m_cat.update(deltaTime);
 }
 
 //-----------------------------------------------------------------

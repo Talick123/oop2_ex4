@@ -19,7 +19,7 @@ public:
 	void handleClick(const sf::Event& event);
 
 	void resetMoves();
-
+	void update(float deltaTime);
 private:	
 	void moveCat();
 	bool BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[SIZE][SIZE]);
