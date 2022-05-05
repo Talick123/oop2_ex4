@@ -9,6 +9,7 @@ GameBoard::GameBoard()
 GameBoard::GameBoard(int numOfBlockedTiles)
 	:m_board(numOfBlockedTiles), /*m_cat(sf::Vector2f(35.f, 0.f))*/ m_cat(std::pair<int,int>(5, 4)) , m_numOfMoves(0)
 {
+	placeCat();
 	m_dataDisplay.setNumOfMovesText(m_numOfMoves);
 }
 
@@ -132,6 +133,22 @@ bool GameBoard::isValid(int row, int col)
 		 || m_board.at(row, col).isBlocked())
 		return false;
 	return true;
+}
+
+void GameBoard::placeCat()
+{
+	int counter = 0;
+	while (counter < 1) { //looping while 3 distinct cells are not set to true
+		int rRow = 3 + rand() % 5;
+		int rCol = 3 + rand() % 5;
+
+		if (!m_board.at(rRow, rCol).isBlocked()) 
+		{
+			m_cat.setLocation({ rRow, rCol });
+			m_cat.setCurrLocation({ rRow, rCol });
+			counter++; //increasing the counter only when a new cell is set to true
+		}
+	}
 }
 //-----------------------------------------------------------------
 
