@@ -27,7 +27,9 @@ private:
 
 	void updateWin(GameBoard& gameBoard);
 	void updateLose(GameBoard& gameBoard);
+	void startNewLevel(GameBoard &gameBoard);
 
+	unsigned int generateLevelDifficulty()const;
 private:
 
 	//Data Types
@@ -40,7 +42,8 @@ private:
 
 	//Members
 	Page m_currPage = Page::GameBoard;
-	
+	unsigned int m_numOfLevelsComplete;
+
 	sf::RectangleShape m_levelComplete;
 	sf::RectangleShape m_levelLost; //Noga: ?
 };

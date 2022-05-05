@@ -3,7 +3,7 @@
 
 
 GameController::GameController()
-	: m_currPage(Page::GameBoard)
+	: m_currPage(Page::GameBoard), m_numOfLevelsComplete(0)
 {
 	initPages();
 }
@@ -119,10 +119,13 @@ void GameController::initPages()
 void GameController::updateWin(GameBoard& gameBoard)
 {
 	//gameBoard.resetMoves();
-	gameBoard = GameBoard(2);
 	m_currPage = Page::UserWin;
-	//create new level or restart level
+	m_numOfLevelsComplete += 1;
+	unsigned int n = generateLevelDifficulty();
+	std::cout << n << std::endl;
+	gameBoard = GameBoard(n);
 
+	//create new level or restart level
 }
 
 void GameController::updateLose(GameBoard& gameBoard)
@@ -130,4 +133,11 @@ void GameController::updateLose(GameBoard& gameBoard)
 	gameBoard.resetMoves();
 	m_currPage = Page::UserLose;
 	//create new level or restart level
+}
+
+unsigned int GameController::generateLevelDifficulty() const
+{
+	int x = 14 < m_numOfLevelsComplete > 0 ? 1 : 14 - m_numOfLevelsComplete;
+	int r = (x) + rand() % 3;
+	return r;
 }

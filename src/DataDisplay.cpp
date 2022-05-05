@@ -42,8 +42,8 @@ void DataDisplay::setBtns()
 
 void DataDisplay::setNewGameButton()
 {
-	m_newGameBtn.setTexture(*(Resources::instance().getUndoTexture()));
+	m_newGameBtn.setTexture(*(Resources::instance().getNewGameTexture()));
 	m_newGameBtn.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 200));
-	m_newGameBtn.setScale(sf::Vector2f(0.15, 0.15));
+	m_newGameBtn.setScale(sf::Vector2f(2, 2));
 }
 

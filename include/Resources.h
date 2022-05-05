@@ -16,6 +16,7 @@ public:
 	////Access Functions
 	sf::Font* getFont();
 	sf::Texture* getUndoTexture();
+	sf::Texture* getNewGameTexture();
 	
 
 private:
@@ -26,6 +27,7 @@ private:
 	//Load Functions
 	void loadFont();
 	void loadUndoTexture();
+	void loadNewGameTexture();
 
 	//======Members==========
 
@@ -34,6 +36,7 @@ private:
 
 	//Textures
 	sf::Texture m_undoTexture;
+	sf::Texture m_newGameTexture;
 
 	//Audio
 	
