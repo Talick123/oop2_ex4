@@ -75,6 +75,25 @@ bool Board::handleClick(const sf::Event& event)
 	return false;
 }
 
+void Board::handleHover(sf::Vector2f location)
+{
+	for (int i = 0; i < 11; i++)
+	{
+		for (int j = 0; j < 11; j++)
+		{
+			if (!at(i, j).isBlocked() && at(i,j).isContain(location))
+			{
+				at(i,j).setFillColor(sf::Color(221, 158, 110));
+			}
+			else
+			{
+				at(i, j).isBlocked() ? at(i, j).setFillColor(sf::Color(184, 221, 214)) : at(i, j).setFillColor(sf::Color(230, 183, 148));
+
+			}
+		}
+	}
+}
+
 Tile& Board::at(int row, int col) //maybe make this const so they cant change it (const on return)
 {
 	return m_tiles[row][col];

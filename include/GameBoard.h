@@ -17,6 +17,7 @@ public:
 	GameBoard(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
 	Btns handleClick(const sf::Event& event);
+	void handleHover(sf::Vector2f location);
 
 	void resetMoves();
 	void update(float deltaTime);

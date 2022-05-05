@@ -40,6 +40,11 @@ Btns GameBoard::handleClick(const sf::Event& event)
 	//handle event in part of board
 }
 
+void GameBoard::handleHover(sf::Vector2f location)
+{
+	m_board.handleHover(location);
+}
+
 //-----------------------------------------------------------------
 
 void GameBoard::moveCat()

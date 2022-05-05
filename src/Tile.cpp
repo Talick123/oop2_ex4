@@ -12,6 +12,11 @@ void Tile::setPosition(sf::Vector2f pos)
 	m_tile.setPosition(pos);
 }
 
+void Tile::setFillColor(sf::Color color)
+{
+	m_tile.setFillColor(color);
+}
+
 void Tile::draw(sf::RenderWindow& window)
 {
 	window.draw(m_tile);
@@ -20,6 +25,11 @@ void Tile::draw(sf::RenderWindow& window)
 bool Tile::isContain(sf::Event event)
 {
 	return m_tile.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
+}
+
+bool Tile::isContain(sf::Vector2f location)
+{
+	return m_tile.getGlobalBounds().contains(location);
 }
 
 bool Tile::isBlocked()

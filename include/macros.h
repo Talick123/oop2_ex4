@@ -1,5 +1,6 @@
 #pragma once
 
+#include <SFML/Graphics.hpp>
 
 //Window
 const int WINDOW_HEIGHT = 900;
@@ -28,3 +29,5 @@ const int D_VEC_ROW_O[] = { 1, 0, -1,  0,  1, -1 };
 const int D_VEC_COL_O[] = { 0, 1,  0, -1,  1,  1 };
 
 enum class Btns {NewGame, Undo, Reset, None};
+
+// colors:

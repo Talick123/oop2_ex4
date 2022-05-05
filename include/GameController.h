@@ -12,7 +12,7 @@ public:
 private:
 	//process (events)
 	void processEvents(sf::RenderWindow& window, GameBoard& gameBoard);
-	void gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoard);
+	void gameBoardProcesEvents(sf::Event& event, sf::RenderWindow &window,GameBoard& gameBoard);
 	void emmptyPageProcessEvents(sf::Event& event);
 
 	//update

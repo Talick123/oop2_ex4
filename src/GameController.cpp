@@ -31,7 +31,7 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 		switch (m_currPage)
 		{
 		case Page::GameBoard:
-			gameBoardProcesEvents(event, gameBoard);
+			gameBoardProcesEvents(event,window, gameBoard);
 			break;
 		case Page::UserWin:
 		case Page::UserLose:
@@ -43,7 +43,7 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 
 }
 
-void GameController::gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoard)
+void GameController::gameBoardProcesEvents(sf::Event& event, sf::RenderWindow& window, GameBoard& gameBoard)
 {
 	switch (event.type)
 	{
@@ -60,6 +60,13 @@ void GameController::gameBoardProcesEvents(sf::Event& event, GameBoard& gameBoar
 		default:
 			break;
 		}
+	}
+	case sf::Event::MouseMoved:
+	{
+		sf::Vector2f location = window.mapPixelToCoords(
+			{ event.mouseMove.x, event.mouseMove.y });
+			gameBoard.handleHover(location);
+		break;
 	}
 	case sf::Event::KeyReleased:
 	{
