@@ -7,7 +7,7 @@
 //}
 
 GameBoard::GameBoard(int numOfBlockedTiles)
-	:m_board(numOfBlockedTiles), m_cat(std::pair<int,int>(5, 4)) , m_numOfMoves(0)
+	:m_board(numOfBlockedTiles), m_cat() , m_numOfMoves(0)
 {
 	placeCat();
 	m_dataDisplay.setNumOfMovesText(m_numOfMoves);

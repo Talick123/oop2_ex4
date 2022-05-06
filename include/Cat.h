@@ -8,8 +8,8 @@ enum dir { L, R, LU, RU, LD, RD, NONE };
 
 class Cat {
 public:
-	//Cat(sf::Vector2f position);
-	Cat(std::pair<int,int> location);
+	Cat();
+	//Cat(std::pair<int,int> location);
 
 
 	void draw(sf::RenderWindow& window);
