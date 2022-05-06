@@ -3,7 +3,7 @@
 
 #include "GameBoard.h"
 #include "macros.h"
-
+#include <time.h>
 
 class GameController {
 public:

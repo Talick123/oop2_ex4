@@ -13,7 +13,7 @@
 
 class GameBoard {
 public:
-	GameBoard();
+	//GameBoard();
 	GameBoard(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
 	Btns handleClick(const sf::Event& event);

@@ -11,8 +11,8 @@ Cat::Cat(std::pair<int, int> location)
 	:m_triangle(sf::CircleShape(30.f, 3)), m_location(location), m_speed(60), m_direction(NONE), m_stop(true)
 {
 	std::cout << "initial location " << location.first << " " << location.second << std::endl;
-	setLocation(location);
-	setCurrLocation(location);
+	//setLocation(location);
+	//setCurrLocation(location);
 	m_triangle.setFillColor(sf::Color(194, 113, 86));
 }
 

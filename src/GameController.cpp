@@ -10,6 +10,7 @@ GameController::GameController()
 
 void GameController::startGame()
 {
+	srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "Circle the Cat", sf::Style::Close);
 	GameBoard gameBoard(14); //TODO: add here starting board (blocked tiles, place of cat)
 

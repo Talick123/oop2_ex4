@@ -13,8 +13,6 @@ Board::Board(int numOfBlockedTiles)
 	: m_tiles(11, std::vector<Tile>(11))
 {
 	initBoard();
-	//srand(17); //Noga: we use rand method, do we need the srand thing? 
-
 	randomizeLevel(numOfBlockedTiles);
 
 }
