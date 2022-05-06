@@ -162,7 +162,7 @@ void GameController::startNewLevel(GameBoard& gameBoard)
 
 unsigned int GameController::generateLevelDifficulty() const
 {
-	int x = 14 < m_numOfLevelsComplete > 0 ? 1 : 14 - m_numOfLevelsComplete;
+	int x = 14 <= m_numOfLevelsComplete > 0 ? 4 : 14 - m_numOfLevelsComplete;
 	int r = (x) + rand() % 3;
-	return r;
+	return r < 4 ? 4 : r;
 }
