@@ -10,4 +10,5 @@
 
                                               "Resources.cpp"
                                               "Audio.cpp"
+                                              "Animation.cpp"
                                               )

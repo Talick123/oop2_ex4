@@ -5,6 +5,7 @@ Resources::Resources()
 	loadFont();
 	loadUndoTexture();
 	loadNewGameTexture();
+	loadCatSpriteSheet();
 	loadAudioClick();
 }
 
@@ -47,6 +48,11 @@ sf::Texture* Resources::getNewGameTexture()
 	return &m_newGameTexture;
 }
 
+sf::Texture* Resources::getCatSpriteSheet()
+{
+	return &m_catSpriteSheet;
+}
+
 sf::SoundBuffer* Resources::getAudioClick()
 {
 	return &m_audioClick;
@@ -83,6 +89,14 @@ void Resources::loadNewGameTexture()
 	if (!m_newGameTexture.loadFromFile("new-game.png"))
 	{
 		std::cerr << "error loading home button textures from file";
+	}
+}
+
+void Resources::loadCatSpriteSheet()
+{
+	if (!m_catSpriteSheet.loadFromFile("cat.png"))
+	{
+		std::cerr << "error loading cat textures from file";
 	}
 }
 

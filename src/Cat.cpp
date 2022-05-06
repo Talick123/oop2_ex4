@@ -8,11 +8,15 @@
 //}
 
 Cat::Cat()
-	:m_triangle(sf::CircleShape(30.f, 3)), m_speed(60), m_direction(NONE), m_stop(true)
+	:m_triangle(sf::Vector2f((float)TILE_RADIUS*2.2, (float)TILE_RADIUS * 2.2)),
+	m_animation(Resources::instance().getCatSpriteSheet(), sf::Vector2u(4, 16), 0.2f), m_speed(60),
+	m_direction(NONE), m_stop(true)
 {
+	m_triangle.setTexture(Resources::instance().getCatSpriteSheet());
 	//setLocation(location);
 	//setCurrLocation(location);
-	m_triangle.setFillColor(sf::Color(194, 113, 86));
+	//m_triangle.setFillColor(sf::Color(194, 113, 86));
+	//m_triangle.setScale(2, 2);
 }
 
 void Cat::draw(sf::RenderWindow& window)
@@ -59,8 +63,11 @@ void Cat::setCurrLocation(std::pair<int, int> newDest)
 
 void Cat::update(float deltaTime)
 {
+	m_animation.update(3, 4, deltaTime);
+	m_triangle.setTextureRect(m_animation.m_uvRect);
+
 	sf::Vector2f direction = { 0.0f, 0.0f };
-	bool stop = true;
+	//bool stop = true;
 	if (!checkStop() && m_direction != NONE)
 	{
 		m_stop = false;
@@ -72,7 +79,10 @@ void Cat::update(float deltaTime)
 		m_stop = true;
 	}
 	
+	
+
 	m_triangle.move(direction);
+
 }
 
 bool Cat::isContain(sf::Event event)
@@ -143,8 +153,8 @@ void Cat::setDirection()
 
 bool Cat::checkStop()
 {
-	if ((abs(m_triangle.getPosition().x - m_currLocation.x) < 10 &&
-		abs(m_triangle.getPosition().y - m_currLocation.y) < 10))
+	if ((abs(m_triangle.getPosition().x - m_currLocation.x) < 8 &&
+		abs(m_triangle.getPosition().y - m_currLocation.y) < 8))
 	{
 		m_triangle.setPosition(m_currLocation);
 		m_direction = NONE;

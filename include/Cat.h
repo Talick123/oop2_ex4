@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "macros.h"
+#include "Resources.h"
+
+#include "Animation.h"
 
 enum dir { L, R, LU, RU, LD, RD, NONE };
 
@@ -27,7 +30,10 @@ private:
 	void setDirection();
 	bool checkStop();
 private:
-	sf::CircleShape m_triangle;
+	//sf::CircleShape m_triangle;
+	sf::RectangleShape m_triangle;
+	Animation m_animation;
+
 	std::pair<int, int> m_location; // location as matrix index
 
 	int m_direction;

@@ -17,7 +17,9 @@ public:
 	sf::Font* getFont();
 	sf::Texture* getUndoTexture();
 	sf::Texture* getNewGameTexture();
+	sf::Texture* getCatSpriteSheet();
 	sf::SoundBuffer* getAudioClick();
+	
 
 private:
 	Resources();
@@ -28,6 +30,7 @@ private:
 	void loadFont();
 	void loadUndoTexture();
 	void loadNewGameTexture();
+	void loadCatSpriteSheet();
 	void loadAudioClick();
 
 	//======Members==========
@@ -38,6 +41,7 @@ private:
 	//Textures
 	sf::Texture m_undoTexture;
 	sf::Texture m_newGameTexture;
+	sf::Texture m_catSpriteSheet;
 
 	//Audio
 	sf::SoundBuffer m_audioClick;
