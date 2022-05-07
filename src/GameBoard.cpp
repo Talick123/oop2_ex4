@@ -121,7 +121,7 @@ void GameBoard::update(float deltaTime)
 
 void GameBoard::undo()
 {
-	if (m_gameMoves.size() <= 1) return;
+	if (m_gameMoves.size() <= 1 || !m_cat.isStoped()) return;
 
 	if (m_gameMoves.back().second)
 		m_gameMoves.back().second->unBlockTile();
