@@ -7,6 +7,10 @@
 
 #include "Animation.h"
 
+#include <queue>
+#include <utility>
+#include <vector>
+
 enum dir { L, R, LU, RU, LD, RD, NONE };
 
 class Cat {
@@ -14,9 +18,9 @@ public:
 	Cat();
 	//Cat(std::pair<int,int> location);
 
-
+	void move(bool visited[][SIZE]);
 	void draw(sf::RenderWindow& window);
-	void handleClick();
+	//void handleClick();
 	std::pair<int, int> getLocation();
 	void setLocation(std::pair<int, int> location);
 	void setCurrLocation(std::pair<int, int> newDest);
@@ -29,8 +33,9 @@ private:
 	sf::Vector2f getCatDirection(float deltaTime);
 	void setDirection();
 	bool checkStop();
+	bool BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[][SIZE], bool visited[][SIZE]);
+	bool isValid(int row, int col);
 private:
-	//sf::CircleShape m_triangle;
 	sf::RectangleShape m_triangle;
 	Animation m_animation;
 

@@ -19,21 +19,111 @@ Cat::Cat()
 	//m_triangle.setScale(2, 2);
 }
 
+//-----------------------------------------------------------------
+
 void Cat::draw(sf::RenderWindow& window)
 {
 	window.draw(m_triangle);
 }
 
-void Cat::handleClick()
+//Tali: i dont think we call this function
+//void Cat::handleClick()
+//{
+//	sf::Vector2f newpos(m_triangle.getPosition().x + 70, m_triangle.getPosition().y);
+//	m_triangle.setPosition(newpos);
+//}
+
+//-----------------------------------------------------------------
+
+void Cat::move(bool visited[][SIZE])
 {
-	sf::Vector2f newpos(m_triangle.getPosition().x + 70, m_triangle.getPosition().y);
-	m_triangle.setPosition(newpos);
+	std::pair<int, int> prev[SIZE][SIZE];	//mat of parents of each tile
+	std::pair<int, int> end_tile;
+	visited[m_location.first][m_location.second] =  true; //setting cats location as visited
+
+	//init prev
+	for (int i = 0; i < SIZE; i++)
+		for (int j = 0; j < SIZE; j++)
+			prev[i][j] = NO_PARENT;
+
+	if (BFS(end_tile, prev, visited))
+	{
+		//if end_tile == m_cat.getLocation() then u lost
+		std::vector<std::pair<int, int>> path;
+		
+		for (auto curr = end_tile; curr != NO_PARENT; curr = prev[curr.first][curr.second])
+			path.push_back(curr);
+
+		if (path.back() == m_location)
+		{
+			path.pop_back();
+			//setLocation(path.back());
+			setCurrLocation(path.back());
+		}
+	}
+	//else move cat accordingly (maybe we reached end)
+	else
+	{
+		std::cout << "end not found\n";
+	}
 }
+
+//-----------------------------------------------------------------
+
+bool Cat::BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[][SIZE], bool visited[][SIZE])
+{
+	std::queue<std::pair<int, int>> q;		//queue of neighbours
+
+	q.push(m_location);			//setting starting location as cats location
+
+	while (!q.empty())
+	{
+		std::pair<int, int> tile = q.front(); //get tile from queue
+		q.pop();							  //remove from queue
+		int x = tile.first, y = tile.second;
+
+		//if current tile 
+		if (x == 0 || y == 0 || x == SIZE - 1 || y == SIZE - 1)
+		{
+			std::cout << "end_found\n";
+			end_tile = tile;
+			return true;
+		}
+
+		//checking neighbours
+		for (int i = 0; i < 6; i++)
+		{
+			int adjX = (x % 2 == 0) ? x + D_VEC_ROW_E[i] : x + D_VEC_ROW_O[i];
+			int adjY = (x % 2 == 0) ? y + D_VEC_COL_E[i] : y + D_VEC_COL_O[i];
+
+			if (isValid(adjX, adjY) && !visited[adjX][adjY])
+			{
+				q.push({ adjX, adjY });
+				visited[adjX][adjY] = true;
+				prev[adjX][adjY] = tile;
+			}
+		}
+	}
+	return false;
+}
+
+//-----------------------------------------------------------------
+
+bool Cat::isValid(int row, int col)
+{
+	if (row < 0 || col < 0 || row >= SIZE || col >= SIZE)
+		return false;
+	return true;
+}
+
+//-----------------------------------------------------------------
 
 std::pair<int, int> Cat::getLocation()
 {
 	return m_location;
 }
+
+//-----------------------------------------------------------------
 
 void Cat::setLocation(std::pair<int, int> location)
 {
@@ -46,6 +136,8 @@ void Cat::setLocation(std::pair<int, int> location)
 	m_currLocation.x = x + BOARD_OFFSET_X;
 	m_currLocation.y = y + BOARD_OFFSET_Y;
 }
+
+//-----------------------------------------------------------------
 
 void Cat::setCurrLocation(std::pair<int, int> newDest)
 {
@@ -60,6 +152,8 @@ void Cat::setCurrLocation(std::pair<int, int> newDest)
 
 	setDirection();
 }
+
+//-----------------------------------------------------------------
 
 void Cat::update(float deltaTime)
 {
@@ -79,21 +173,24 @@ void Cat::update(float deltaTime)
 		m_stop = true;
 	}
 	
-	
-
 	m_triangle.move(direction);
-
 }
+
+//-----------------------------------------------------------------
 
 bool Cat::isContain(sf::Event event)
 {
 	return m_triangle.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
 }
 
+//-----------------------------------------------------------------
+
 bool Cat::isStoped()
 {
 	return m_stop;
 }
+
+//-----------------------------------------------------------------
 
 sf::Vector2f Cat::getCatDirection(float deltaTime)
 {
@@ -131,6 +228,8 @@ sf::Vector2f Cat::getCatDirection(float deltaTime)
 	return dir;
 }
 
+//-----------------------------------------------------------------
+
 void Cat::setDirection()
 {
 	if (m_currLocation.x < m_oldLocation.x) //left
@@ -150,6 +249,8 @@ void Cat::setDirection()
 		else m_direction = R; //just right
 	}
 }
+
+//-----------------------------------------------------------------
 
 bool Cat::checkStop()
 {

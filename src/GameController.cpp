@@ -12,13 +12,13 @@ void GameController::startGame()
 {
 	srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "Circle the Cat", sf::Style::Close);
-	GameBoard gameBoard(14); //TODO: add here starting board (blocked tiles, place of cat)
+	GameBoard gameBoard(14); //TODO: const
 
 	while (window.isOpen())
 	{
 		processEvents(window, gameBoard);
 		update(gameBoard);
-		render(window, gameBoard); //maybe put first
+		render(window, gameBoard);
 	}
 }
 
@@ -37,7 +37,7 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 		case Page::UserWin:
 		case Page::UserLose:
 		default:
-			emmptyPageProcessEvents(event);
+			emmptyPageProcessEvents(event); //TODO: empty
 			break;
 		}
 	}
