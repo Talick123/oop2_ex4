@@ -10,7 +10,7 @@
 Cat::Cat()
 	:m_triangle(sf::Vector2f((float)TILE_RADIUS*2.2, (float)TILE_RADIUS * 2.2)),
 	m_animation(Resources::instance().getCatSpriteSheet(), sf::Vector2u(4, 16), 0.2f), m_speed(60),
-	m_direction(NONE), m_stop(true)
+	m_direction(Direction::NONE), m_stop(true)
 {
 	m_triangle.setTexture(Resources::instance().getCatSpriteSheet());
 	//setLocation(location);
@@ -25,13 +25,6 @@ void Cat::draw(sf::RenderWindow& window)
 {
 	window.draw(m_triangle);
 }
-
-//Tali: i dont think we call this function
-//void Cat::handleClick()
-//{
-//	sf::Vector2f newpos(m_triangle.getPosition().x + 70, m_triangle.getPosition().y);
-//	m_triangle.setPosition(newpos);
-//}
 
 //-----------------------------------------------------------------
 
@@ -192,16 +185,16 @@ void Cat::setCurrLocation(std::pair<int, int> newDest)
 
 void Cat::update(float deltaTime)
 {
-	m_animation.update(3, 4, deltaTime);
+	m_animation.update(int(m_direction), 4, deltaTime);
 	m_triangle.setTextureRect(m_animation.m_uvRect);
 
 	sf::Vector2f direction = { 0.0f, 0.0f };
 	//bool stop = true;
-	if (!checkStop() && m_direction != NONE)
+	if (!checkStop() && m_direction != Direction::NONE)
 	{
 		m_stop = false;
 		direction = getCatDirection(deltaTime);
-		//animation here
+		//update animation here
 	}
 	else
 	{
@@ -231,30 +224,30 @@ sf::Vector2f Cat::getCatDirection(float deltaTime)
 {
 	sf::Vector2f dir(0.0f, 0.0f);
 
-	if(m_direction == L) //left
+	if(m_direction == Direction::L) //left
 	{ 
 		dir.x -= m_speed * deltaTime;
 	}
-	else if (m_direction == R) //right
+	else if (m_direction == Direction::R) //right
 	{
 		dir.x += m_speed * deltaTime;
 	}
-	else if (m_direction == LU) //left up
+	else if (m_direction == Direction::LU) //left up
 	{
 		dir.x -= (m_speed * deltaTime) / 2;
 		dir.y -= m_speed * deltaTime;
 	}
-	else if (m_direction ==RU) //right up
+	else if (m_direction == Direction::RU) //right up
 	{
 		dir.x += (m_speed * deltaTime) / 2;
 		dir.y -= m_speed * deltaTime;
 	}
-	else if (m_direction == LD) //left down
+	else if (m_direction == Direction::LD) //left down
 	{
 		dir.x -= (m_speed * deltaTime) / 2;
 		dir.y += m_speed * deltaTime;
 	}
-	else if (m_direction == RD) //right down
+	else if (m_direction == Direction::RD) //right down
 	{
 		dir.x += (m_speed * deltaTime) / 2;
 		dir.y += m_speed * deltaTime;
@@ -270,18 +263,18 @@ void Cat::setDirection()
 	if (m_currLocation.x < m_oldLocation.x) //left
 	{
 		if (m_currLocation.y < m_oldLocation.y) //up
-			m_direction = LU;
+			m_direction = Direction::LU;
 		else if (m_currLocation.y > m_oldLocation.y) //down
-			m_direction = LD;
-		else m_direction = L; //just left
+			m_direction = Direction::LD;
+		else m_direction = Direction::L; //just left
 	}
 	else if (m_currLocation.x > m_oldLocation.x) //right
 	{
 		if (m_currLocation.y < m_oldLocation.y) //up
-			m_direction = RU;
+			m_direction = Direction::RU;
 		else if (m_currLocation.y > m_oldLocation.y) //down
-			m_direction = RD;
-		else m_direction = R; //just right
+			m_direction = Direction::RD;
+		else m_direction = Direction::R; //just right
 	}
 }
 
@@ -289,11 +282,11 @@ void Cat::setDirection()
 
 bool Cat::checkStop()
 {
-	if ((abs(m_triangle.getPosition().x - m_currLocation.x) < 8 &&
-		abs(m_triangle.getPosition().y - m_currLocation.y) < 8))
+	if ((abs(m_triangle.getPosition().x - m_currLocation.x) < 10 &&
+		abs(m_triangle.getPosition().y - m_currLocation.y) < 10))
 	{
 		m_triangle.setPosition(m_currLocation);
-		m_direction = NONE;
+		m_direction = Direction::NONE;
 		return true;
 	}
 	return false;

@@ -13,7 +13,8 @@
 
 
 
-enum dir { L, R, LU, RU, LD, RD, NONE };
+enum class Direction { L = 14 , R = 10, LU = 13, RU = 11, LD = 7, RD = 9, NONE = 4};
+enum class NumOfImages { L = 4, R = 4, LU = 4, RU = 4, LD = 4, RD = 4, NONE = 4 };
 
 class Cat {
 public:
@@ -46,7 +47,7 @@ private:
 
 	std::pair<int, int> m_location; // location as matrix index
 
-	int m_direction;
+	Direction m_direction;
 	sf::Vector2f m_currLocation; //destination (in pixels)
 	sf::Vector2f m_oldLocation; // (in pixels)
 	float m_speed; 
