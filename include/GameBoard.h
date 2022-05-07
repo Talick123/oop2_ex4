@@ -24,6 +24,7 @@ public:
 	void update(float deltaTime);
 
 	void undo();
+	void resetLevel();
 private:	
 	void moveCat();
 	void placeCat();

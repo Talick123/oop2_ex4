@@ -59,7 +59,10 @@ void GameController::gameBoardProcesEvents(sf::Event& event, sf::RenderWindow& w
 			break;
 		case Btns::Undo:
 			gameBoard.undo();
+			break;
 		case Btns::Reset:
+			gameBoard.resetLevel();
+			break;
 		default:
 			break;
 		}

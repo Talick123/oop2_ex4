@@ -13,6 +13,8 @@ void DataDisplay::draw(sf::RenderWindow& window)
 	window.draw(m_numOfMovesTitleText);
 	m_newGameBtn.draw(window);
 	m_undoGameBtn.draw(window);
+	m_resetGameBtn.draw(window);
+
 }
 
 Btns DataDisplay::handleClick(sf::Event event)
@@ -24,6 +26,10 @@ Btns DataDisplay::handleClick(sf::Event event)
 	else if (m_undoGameBtn.isContain(event))
 	{
 		return Btns::Undo;
+	}
+	else if (m_resetGameBtn.isContain(event))
+	{
+		return Btns::Reset;
 	}
 	else return Btns::None;
 }
@@ -42,9 +48,15 @@ void DataDisplay::updateNumOfMovesString(unsigned int moves)
 {
 	m_numOfMovesTitleText.setString("Moves: " + std::to_string(moves));
 	if (moves == 0)
+	{
 		m_undoGameBtn.setColor(sf::Color(115, 115, 115));
+		m_resetGameBtn.setColor(sf::Color(115, 115, 115));
+	}
 	else
+	{
 		m_undoGameBtn.setColor(sf::Color(252, 252, 252));
+		m_resetGameBtn.setColor(sf::Color(252, 252, 252));
+	}
 }
 
 void DataDisplay::setBtns()
@@ -53,7 +65,7 @@ void DataDisplay::setBtns()
 	setUndoBtn();
 	
 	//set reset level button
-	//setResetLevelBtn();
+	setResetLevelBtn();
 
 	//set new game button
 	setNewGameButton();
@@ -64,6 +76,13 @@ void DataDisplay::setUndoBtn()
 	m_undoGameBtn.setTexture(*(Resources::instance().getNewGameTexture()));
 	m_undoGameBtn.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 400));
 	m_undoGameBtn.setScale(sf::Vector2f(2, 2));
+}
+
+void DataDisplay::setResetLevelBtn()
+{
+	m_resetGameBtn.setTexture(*(Resources::instance().getNewGameTexture()));
+	m_resetGameBtn.setPosition(sf::Vector2f(BOARD_AREA_LENGTH + 50, 600));
+	m_resetGameBtn.setScale(sf::Vector2f(2, 2));
 }
 
 void DataDisplay::setNewGameButton()

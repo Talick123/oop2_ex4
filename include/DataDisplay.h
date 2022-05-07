@@ -6,6 +6,8 @@
 #include "Resources.h"
 #include "NewGameButton.h"
 #include "UndoGameButton.h"
+#include "ResetGameButton.h"
+
 
 
 class DataDisplay {
@@ -29,4 +31,5 @@ private:
 	//Game Buttons
 	NewGameButton m_newGameBtn;
 	UndoGameButton m_undoGameBtn;
+	ResetoGameButton m_resetGameBtn;
 };

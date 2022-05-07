@@ -131,7 +131,7 @@ void GameBoard::undo()
 {
 	if (m_gameMoves.size() <= 1) return;
 
-	if (m_gameMoves.back().second)
+	if (m_gameMoves.back().second) //Tali: Can take out of if
 	{
 		std::cout << "not null\n";
 		m_gameMoves.back().second->unBlockTile();
@@ -141,5 +141,16 @@ void GameBoard::undo()
 	m_numOfMoves--;
 	m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
 
+}
+
+void GameBoard::resetLevel()
+{
+	m_cat.setLocation(m_gameMoves.front().first);
+	while (m_gameMoves.size() > 1)
+	{
+		m_gameMoves.back().second->unBlockTile();
+		m_gameMoves.pop_back();
+	}
+	resetMoves();
 }
 
