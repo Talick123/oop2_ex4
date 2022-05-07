@@ -5,6 +5,8 @@
 #include "macros.h"
 #include "Resources.h"
 #include "NewGameButton.h"
+#include "UndoGameButton.h"
+
 
 class DataDisplay {
 public:
@@ -26,4 +28,5 @@ private:
 	
 	//Game Buttons
 	NewGameButton m_newGameBtn;
+	UndoGameButton m_undoGameBtn;
 };

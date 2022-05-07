@@ -12,8 +12,8 @@ void GameController::startGame()
 {
 	srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "Circle the Cat", sf::Style::Close);
-	//GameBoard gameBoard(14); //TODO: const
-	GameBoard gameBoard(25); //TODO: const
+	GameBoard gameBoard(14); //TODO: const
+	//GameBoard gameBoard(25); 
 
 	while (window.isOpen())
 	{
@@ -58,6 +58,7 @@ void GameController::gameBoardProcesEvents(sf::Event& event, sf::RenderWindow& w
 			startNewLevel(gameBoard);
 			break;
 		case Btns::Undo:
+			gameBoard.undo();
 		case Btns::Reset:
 		default:
 			break;

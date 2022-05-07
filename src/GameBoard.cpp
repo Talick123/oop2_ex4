@@ -11,6 +11,7 @@ GameBoard::GameBoard(int numOfBlockedTiles)
 {
 	placeCat(); //Tali: would like to change to initCatLocation or something like that
 	m_dataDisplay.setNumOfMovesText(m_numOfMoves);
+	m_gameMoves.emplace_back(m_cat.getLocation(),&m_board.at(m_cat.getLocation().first, m_cat.getLocation().second));
 }
 
 //-----------------------------------------------------------------
@@ -26,9 +27,12 @@ void GameBoard::draw(sf::RenderWindow& window)
 
 Btns GameBoard::handleClick(const sf::Event& event)
 {
-	if (!isCatHere(event) && m_cat.isStoped() && m_board.handleClick(event))
+	Tile* tile = NULL;
+	if (!isCatHere(event) && m_cat.isStoped() && m_board.handleClick(event, tile))
 	{
 		moveCat();
+		m_gameMoves.emplace_back(m_cat.getLocation(), tile);
+
 		m_numOfMoves++;
 		m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
 		return Btns::None;
@@ -63,7 +67,6 @@ void GameBoard::moveCat()
 	{
 		//Tali: Cat is blocked in completely, user won, what to do
 		std::cout << "USER WON\n";
-
 	}
 }
 
@@ -77,7 +80,7 @@ void GameBoard::initVisited(bool visited[][SIZE])
 		{
 			if (m_board.at(i, j).isBlocked())
 			{
-				std::cout << "Blocked at " << i << " " << j << "\n";
+				//std::cout << "Blocked at " << i << " " << j << "\n";
 				visited[i][j] = true;
 			}
 		}
@@ -120,5 +123,23 @@ void GameBoard::resetMoves()
 void GameBoard::update(float deltaTime)
 {
 	m_cat.update(deltaTime);
+}
+
+//-----------------------------------------------------------------
+
+void GameBoard::undo()
+{
+	if (m_gameMoves.size() <= 1) return;
+
+	if (m_gameMoves.back().second)
+	{
+		std::cout << "not null\n";
+		m_gameMoves.back().second->unBlockTile();
+	}
+	m_gameMoves.pop_back();
+	m_cat.setCurrLocation(m_gameMoves.back().first);
+	m_numOfMoves--;
+	m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
+
 }
 

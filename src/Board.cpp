@@ -56,7 +56,7 @@ void Board::draw(sf::RenderWindow& window)
 		}
 }
 
-bool Board::handleClick(const sf::Event& event)
+bool Board::handleClick(const sf::Event& event, Tile*& tile_clicked)
 {
 	for (int i = 0; i < 11; i++)
 		for (int j = 0; j < 11; j++)
@@ -66,6 +66,9 @@ bool Board::handleClick(const sf::Event& event)
 				//std::cout << "Click on tile. row: " << i << ", col: " << j << std::endl;
 				if (m_tiles[i][j].isBlocked()) return false;
 
+				tile_clicked = &m_tiles[i][j];
+				if (!tile_clicked)
+					std::cout << "didnt work\n";
 				m_tiles[i][j].blockTile();
 				m_tiles[i][j].clicked();
 				return true;

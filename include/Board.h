@@ -12,7 +12,7 @@ public:
 	Board();
 	Board(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
-	bool handleClick(const sf::Event& event);
+	bool handleClick(const sf::Event& event, Tile*& tile_clicked);
 	void handleHover(sf::Vector2f location);
 	Tile& at(int row, int col);
 private:

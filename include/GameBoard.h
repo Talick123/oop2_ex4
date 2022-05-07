@@ -22,6 +22,8 @@ public:
 
 	void resetMoves();
 	void update(float deltaTime);
+
+	void undo();
 private:	
 	void moveCat();
 	void placeCat();
@@ -33,6 +35,7 @@ private:
 	Board m_board;
 	Cat m_cat;
 	DataDisplay m_dataDisplay;
+	std::vector<std::pair<std::pair<int, int>, Tile*>> m_gameMoves;
 
-	int m_numOfMoves;
+	int m_numOfMoves; //Tali: do we need num of moves? m_gameMoves.size() - 1 will tell us how much 
 };
