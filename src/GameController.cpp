@@ -12,7 +12,8 @@ void GameController::startGame()
 {
 	srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "Circle the Cat", sf::Style::Close);
-	GameBoard gameBoard(14); //TODO: const
+	//GameBoard gameBoard(14); //TODO: const
+	GameBoard gameBoard(25); //TODO: const
 
 	while (window.isOpen())
 	{

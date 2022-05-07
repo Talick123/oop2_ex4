@@ -1,15 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+#include <queue>
+#include <utility>
+#include <vector>
+#include <exception>
+
 #include "Resources.h"
 
 #include "Board.h"
 #include "Cat.h"
 #include "DataDisplay.h"
-
-#include <queue>
-#include <utility>
-#include <vector>
 
 class GameBoard {
 public:

@@ -39,6 +39,7 @@ void Cat::move(bool visited[][SIZE])
 {
 	std::pair<int, int> prev[SIZE][SIZE];	//mat of parents of each tile
 	std::pair<int, int> end_tile;
+	std::vector<std::pair<int, int>> path;
 	visited[m_location.first][m_location.second] =  true; //setting cats location as visited
 
 	//init prev
@@ -48,26 +49,64 @@ void Cat::move(bool visited[][SIZE])
 
 	if (BFS(end_tile, prev, visited))
 	{
-		//if end_tile == m_cat.getLocation() then u lost
-		std::vector<std::pair<int, int>> path;
+		if (end_tile == m_location)
+			throw std::out_of_range("");
 		
-		for (auto curr = end_tile; curr != NO_PARENT; curr = prev[curr.first][curr.second])
-			path.push_back(curr);
+		createPath(end_tile, prev, path);
+		moveAccordingly(path);
+	}
+	else
+		findPosInEnclosure(prev);
+}
+//-----------------------------------------------------------------
 
-		if (path.back() == m_location)
+void Cat::findPosInEnclosure(std::pair<int, int> prev[][SIZE])
+{
+	std::vector<std::pair<int, int>> path, temp_path;
+	int longest_path = 0;
+
+	for (int row = 0; row < SIZE; row++)
+	{
+		for (int col = 0; col < SIZE; col++)
 		{
-			path.pop_back();
-			//setLocation(path.back());
-			setCurrLocation(path.back());
+			temp_path.clear();
+			if (prev[row][col] != NO_PARENT)
+			{
+				std::pair<int, int> curr_end(row, col);
+
+				createPath(curr_end, prev, temp_path);
+
+				if (temp_path.size() > longest_path)
+				{
+					longest_path = temp_path.size();
+					path = temp_path;
+				}
+			}
 		}
 	}
-	//else move cat accordingly (maybe we reached end)
-	else
-	{
-		std::cout << "end not found\n";
-	}
+	if (longest_path <= 0)
+		throw std::domain_error("");
+	moveAccordingly(path);
 }
 
+//-----------------------------------------------------------------
+
+void Cat::createPath(std::pair<int, int> end_tile, std::pair<int, int> prev[][SIZE], std::vector<std::pair<int, int>>& path)
+{
+	for (auto curr = end_tile; curr != NO_PARENT; curr = prev[curr.first][curr.second])
+		path.push_back(curr);
+}
+
+//-----------------------------------------------------------------
+
+void Cat::moveAccordingly(std::vector<std::pair<int, int>> path)
+{
+	if (path.back() == m_location)
+	{
+		path.pop_back();
+		setCurrLocation(path.back());
+	}
+}
 //-----------------------------------------------------------------
 
 bool Cat::BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[][SIZE], bool visited[][SIZE])
@@ -118,7 +157,7 @@ bool Cat::isValid(int row, int col)
 
 //-----------------------------------------------------------------
 
-std::pair<int, int> Cat::getLocation()
+std::pair<int, int> Cat::getLocation()const
 {
 	return m_location;
 }

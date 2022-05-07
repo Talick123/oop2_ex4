@@ -51,7 +51,20 @@ void GameBoard::moveCat()
 	bool visited[SIZE][SIZE];
 	memset(visited, false, sizeof visited);
 	initVisited(visited);
-	m_cat.move(visited);
+	try {
+		m_cat.move(visited);
+	}
+	catch (std::out_of_range& e)
+	{
+		//Tali: Cat won, what to do with this
+		std::cout << "CAT WON\n";
+	}
+	catch (std::domain_error& e)
+	{
+		//Tali: Cat is blocked in completely, user won, what to do
+		std::cout << "USER WON\n";
+
+	}
 }
 
 //-----------------------------------------------------------------

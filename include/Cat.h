@@ -2,14 +2,16 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "macros.h"
-#include "Resources.h"
-
-#include "Animation.h"
-
 #include <queue>
 #include <utility>
 #include <vector>
+#include <exception>
+
+#include "Animation.h"
+#include "macros.h"
+#include "Resources.h"
+
+
 
 enum dir { L, R, LU, RU, LD, RD, NONE };
 
@@ -21,7 +23,7 @@ public:
 	void move(bool visited[][SIZE]);
 	void draw(sf::RenderWindow& window);
 	//void handleClick();
-	std::pair<int, int> getLocation();
+	std::pair<int, int> getLocation()const;
 	void setLocation(std::pair<int, int> location);
 	void setCurrLocation(std::pair<int, int> newDest);
 
@@ -35,6 +37,9 @@ private:
 	bool checkStop();
 	bool BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[][SIZE], bool visited[][SIZE]);
 	bool isValid(int row, int col);
+	void findPosInEnclosure(std::pair<int, int> prev[][SIZE]);
+	void moveAccordingly(std::vector < std::pair<int, int>> path);
+	void createPath(std::pair<int, int> end_tile, std::pair<int, int> prev[][SIZE], std::vector < std::pair<int, int>>& path);
 private:
 	sf::RectangleShape m_triangle;
 	Animation m_animation;
