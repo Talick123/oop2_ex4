@@ -32,11 +32,9 @@ Btns GameBoard::handleClick(const sf::Event& event)
 	{
 		moveCat();
 		m_gameMoves.emplace_back(m_cat.getLocation(), tile);
-
 		m_numOfMoves++;
 		m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
 		return Btns::None;
-		//m_cat.handleClick();
 	}
 	return m_dataDisplay.handleClick(event); 
 }
@@ -75,16 +73,10 @@ void GameBoard::moveCat()
 void GameBoard::initVisited(bool visited[][SIZE])
 {
 	for (int i = 0; i < SIZE; i++)
-	{
 		for (int j = 0; j < SIZE; j++)
-		{
 			if (m_board.at(i, j).isBlocked())
-			{
-				//std::cout << "Blocked at " << i << " " << j << "\n";
 				visited[i][j] = true;
-			}
-		}
-	}
+
 }
 
 //-----------------------------------------------------------------
@@ -131,17 +123,16 @@ void GameBoard::undo()
 {
 	if (m_gameMoves.size() <= 1) return;
 
-	if (m_gameMoves.back().second) //Tali: Can take out of if
-	{
-		std::cout << "not null\n";
+	if (m_gameMoves.back().second)
 		m_gameMoves.back().second->unBlockTile();
-	}
+
 	m_gameMoves.pop_back();
 	m_cat.setCurrLocation(m_gameMoves.back().first);
 	m_numOfMoves--;
 	m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
-
 }
+
+//-----------------------------------------------------------------
 
 void GameBoard::resetLevel()
 {

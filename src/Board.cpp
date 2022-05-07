@@ -63,12 +63,9 @@ bool Board::handleClick(const sf::Event& event, Tile*& tile_clicked)
 		{
 			if (m_tiles[i][j].isContain(event))
 			{
-				//std::cout << "Click on tile. row: " << i << ", col: " << j << std::endl;
 				if (m_tiles[i][j].isBlocked()) return false;
 
 				tile_clicked = &m_tiles[i][j];
-				if (!tile_clicked)
-					std::cout << "didnt work\n";
 				m_tiles[i][j].blockTile();
 				m_tiles[i][j].clicked();
 				return true;

@@ -24,7 +24,6 @@ public:
 private:
 	sf::CircleShape m_tile;
 	bool m_blocked;
-	//std::map<int, int> m_neighbours;
 	Audio m_audio;
 	
 };

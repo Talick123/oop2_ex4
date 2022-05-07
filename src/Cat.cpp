@@ -121,14 +121,12 @@ bool Cat::BFS(std::pair<int, int>& end_tile, std::pair<int, int> prev[][SIZE], b
 		q.pop();							  //remove from queue
 		int x = tile.first, y = tile.second;
 
-		//if current tile 
+		//if current tile is end
 		if (x == 0 || y == 0 || x == SIZE - 1 || y == SIZE - 1)
 		{
-			std::cout << "end_found\n";
 			end_tile = tile;
 			return true;
 		}
-
 		//checking neighbours
 		for (int i = 0; i < 6; i++)
 		{
@@ -167,7 +165,6 @@ std::pair<int, int> Cat::getLocation()const
 void Cat::setLocation(std::pair<int, int> location)
 {
 	m_location = location;
-	std::cout << "set location " << location.first << " " << location.second << std::endl;
 	auto x = (location.first % 2 == 0) ? TOTAL_TILE_SIZE * location.second : TOTAL_TILE_SIZE * location.second + TILE_RADIUS;
 	auto y = TOTAL_TILE_SIZE * location.first;
 	m_triangle.setPosition(sf::Vector2f(x + BOARD_OFFSET_X, y + BOARD_OFFSET_Y));
@@ -181,7 +178,6 @@ void Cat::setLocation(std::pair<int, int> location)
 void Cat::setCurrLocation(std::pair<int, int> newDest)
 {
 	m_location = newDest;
-	//std::cout << "set location " << newDest.first << " " << newDest.second << std::endl;
 	auto x = (newDest.first % 2 == 0) ? TOTAL_TILE_SIZE * newDest.second : TOTAL_TILE_SIZE * newDest.second + TILE_RADIUS;
 	auto y = TOTAL_TILE_SIZE * newDest.first;
 
