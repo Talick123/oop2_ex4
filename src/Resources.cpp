@@ -10,6 +10,7 @@ Resources::Resources()
 	loadAudioClick();
 	loadWinPageTexture();
 	loadLosePageTexture();
+	loadGameIcon();
 }
 
 //-----------------------------------------------------------------
@@ -63,6 +64,11 @@ sf::Texture* Resources::getWinPageTexture()
 sf::Texture* Resources::getLosePageTexture()
 {
 	return &m_losePageTexture;
+}
+
+sf::Image* Resources::getGameIcon()
+{
+	return &m_gameIcon;
 }
 
 //-----------------------------------------------------------------
@@ -137,5 +143,13 @@ void Resources::loadAudioClick()
 	if (!m_audioClick.loadFromFile("click.wav"))
 	{
 		std::cerr << "error loading game music from file";
+	}
+}
+
+void Resources::loadGameIcon()
+{
+	if (!m_gameIcon.loadFromFile("GameIcon.png"))
+	{
+		std::cerr << "error loading game icon from file";
 	}
 }

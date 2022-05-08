@@ -32,6 +32,7 @@ private:
 	void changeGameStatus(GameBoard& gameBoard);
 	void checkBtnClick(Btns clicked, GameBoard& gameBoard);
 	unsigned int generateLevelDifficulty()const;
+	void setGameIcon(sf::RenderWindow& window);
 private:
 
 	//Data Types

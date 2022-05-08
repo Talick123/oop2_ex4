@@ -11,6 +11,7 @@ void GameController::startGame()
 {
 	srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), GAME_TITLE, sf::Style::Close);
+	setGameIcon(window);
 	GameBoard gameBoard(MAX_BLOCK_TILES);
 
 	while (window.isOpen())
@@ -176,4 +177,11 @@ unsigned int GameController::generateLevelDifficulty() const
 	int x = 14 <= m_numOfLevelsComplete > 0 ? 4 : 14 - m_numOfLevelsComplete;
 	int r = (x) + rand() % 3;
 	return r < 4 ? 4 : r;
+}
+
+void GameController::setGameIcon(sf::RenderWindow& window)
+{
+	sf::Image image = (*Resources::instance().getGameIcon());
+	window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
+
 }
