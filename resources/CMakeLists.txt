@@ -7,13 +7,10 @@
 configure_file ("fonts/YatraOne.ttf" ${CMAKE_BINARY_DIR} COPYONLY)
 
 # textures
-configure_file ("undo.png" ${CMAKE_BINARY_DIR} COPYONLY)
-configure_file ("new-game.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("images/cat.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("images/new_game_btn.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("images/resart_btn.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("images/undo_btn.png" ${CMAKE_BINARY_DIR} COPYONLY)
-
 
 
 #audio

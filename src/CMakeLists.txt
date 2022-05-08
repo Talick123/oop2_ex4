@@ -6,9 +6,7 @@
                                               "Cat.cpp"
                                               "DataDisplay.cpp"
                                               "Button.cpp"
-                                              "NewGameButton.cpp"
-                                              "UndoGameButton.cpp"
-
+                                            
 
                                               "Resources.cpp"
                                               "Audio.cpp"
