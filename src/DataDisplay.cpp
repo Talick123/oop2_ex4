@@ -59,7 +59,6 @@ void DataDisplay::updateNumOfMovesString(unsigned int moves)
 
 void DataDisplay::setBtns()
 {
-
 	m_buttons.push_back(Button(Btns::NewGame));
 	m_buttons.push_back(Button(Btns::Undo));
 	m_buttons.push_back(Button(Btns::Reset));

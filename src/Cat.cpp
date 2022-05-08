@@ -13,10 +13,6 @@ Cat::Cat()
 	m_direction(Direction::NONE), m_stop(true)
 {
 	m_triangle.setTexture(Resources::instance().getCatSpriteSheet());
-	//setLocation(location);
-	//setCurrLocation(location);
-	//m_triangle.setFillColor(sf::Color(194, 113, 86));
-	//m_triangle.setScale(2, 2);
 }
 
 //-----------------------------------------------------------------
@@ -189,12 +185,11 @@ void Cat::update(float deltaTime)
 	m_triangle.setTextureRect(m_animation.m_uvRect);
 
 	sf::Vector2f direction = { 0.0f, 0.0f };
-	//bool stop = true;
+
 	if (!checkStop() && m_direction != Direction::NONE)
 	{
 		m_stop = false;
 		direction = getCatDirection(deltaTime);
-		//update animation here
 	}
 	else
 	{

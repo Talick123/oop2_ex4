@@ -2,19 +2,12 @@
 
 const int DEFAULT_LEVEL = 10;
 
-Board::Board()
-	: m_tiles(11, std::vector<Tile>(11))
-{
-	initBoard();
-	randomizeLevel(DEFAULT_LEVEL);
-}
 
 Board::Board(int numOfBlockedTiles)
 	: m_tiles(11, std::vector<Tile>(11))
 {
 	initBoard();
 	randomizeLevel(numOfBlockedTiles);
-
 }
 
 void Board::initBoard()

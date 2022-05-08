@@ -10,7 +10,6 @@ Resources::Resources()
 	loadAudioClick();
 }
 
-
 //-----------------------------------------------------------------
 
 Resources::~Resources()
@@ -36,26 +35,26 @@ sf::Font* Resources::getFont()
 	return &m_font;
 }
 
+//-----------------------------------------------------------------
+
 sf::Texture* Resources::getBtnTexture(Btns button)
 {
 	return &m_btnTextures[(int)button];
 }
 
-
 //-----------------------------------------------------------------
-
 
 sf::Texture* Resources::getCatSpriteSheet()
 {
 	return &m_catSpriteSheet;
 }
 
+//-----------------------------------------------------------------
+
 sf::SoundBuffer* Resources::getAudioClick()
 {
 	return &m_audioClick;
 }
-
-
 
 
 //===============================================================//
@@ -70,6 +69,8 @@ void Resources::loadFont()
 		std::cerr << "error loading font from file";
 	}
 }
+
+//-----------------------------------------------------------------
 
 void Resources::loadBtnTextures()
 {
@@ -92,6 +93,8 @@ void Resources::loadCatSpriteSheet()
 		std::cerr << "error loading cat textures from file";
 	}
 }
+
+//-----------------------------------------------------------------
 
 void Resources::loadAudioClick()
 {
