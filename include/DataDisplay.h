@@ -4,9 +4,7 @@
 #include <iostream>
 #include "macros.h"
 #include "Resources.h"
-#include "NewGameButton.h"
-#include "UndoGameButton.h"
-#include "ResetGameButton.h"
+#include "Button.h"
 
 
 
@@ -22,14 +20,8 @@ public:
 
 private:
 	void setBtns();
-	void setUndoBtn();
-	void setResetLevelBtn();
-	void setNewGameButton();
 private:
 	sf::Text m_numOfMovesTitleText;
-	
-	//Game Buttons
-	NewGameButton m_newGameBtn;
-	UndoGameButton m_undoGameBtn;
-	ResetoGameButton m_resetGameBtn;
+
+	std::vector<Button> m_buttons;
 };

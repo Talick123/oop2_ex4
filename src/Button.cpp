@@ -1,11 +1,11 @@
 #include "Button.h"
 
-Button::Button(sf::Texture& texture, sf::Vector2f pos, sf::Vector2f scale)
+Button::Button(Btns type)
 {
-	setTexture(texture);
-	setPosition(pos);
-	setScale(scale);
+	m_button.setTexture(*Resources::instance().getBtnTexture(type));
+	m_button.setScale(sf::Vector2f(1, 1));
 }
+
 
 void Button::draw(sf::RenderWindow& window)
 {
@@ -25,14 +25,4 @@ void Button::setPosition(sf::Vector2f pos)
 void Button::setColor(sf::Color color)
 {
 	m_button.setColor(color);
-}
-
-void Button::setScale(sf::Vector2f scale)
-{
-	m_button.setScale(scale);
-}
-
-void Button::setTexture(sf::Texture &texture)
-{
-	m_button.setTexture(texture);
 }

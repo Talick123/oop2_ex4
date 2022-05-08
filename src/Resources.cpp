@@ -1,10 +1,11 @@
 #include "Resources.h"
+#include "macros.h"
+
 
 Resources::Resources()
 {
 	loadFont();
-	loadUndoTexture();
-	loadNewGameTexture();
+	loadBtnTextures();
 	loadCatSpriteSheet();
 	loadAudioClick();
 }
@@ -35,18 +36,14 @@ sf::Font* Resources::getFont()
 	return &m_font;
 }
 
+sf::Texture* Resources::getBtnTexture(Btns button)
+{
+	return &m_btnTextures[(int)button];
+}
+
 
 //-----------------------------------------------------------------
 
-sf::Texture* Resources::getUndoTexture()
-{
-	return &m_undoTexture;
-}
-
-sf::Texture* Resources::getNewGameTexture()
-{
-	return &m_newGameTexture;
-}
 
 sf::Texture* Resources::getCatSpriteSheet()
 {
@@ -74,23 +71,19 @@ void Resources::loadFont()
 	}
 }
 
+void Resources::loadBtnTextures()
+{
+	m_btnTextures.resize(NUM_OF_BTNS);
+
+	if (!m_btnTextures[(int)Btns::NewGame].loadFromFile("new_game_btn.png")
+		|| !m_btnTextures[(int)Btns::Undo].loadFromFile("undo_btn.png")
+		|| !m_btnTextures[(int)Btns::Reset].loadFromFile("resart_btn.png"))
+	{
+		std::cerr << "error loading button textures from file";
+	}
+}
+
 //-----------------------------------------------------------------
-
-void Resources::loadUndoTexture()
-{
-	if (!m_undoTexture.loadFromFile("undo.png"))
-	{
-		std::cerr << "error loading home button textures from file";
-	}
-}
-
-void Resources::loadNewGameTexture()
-{
-	if (!m_newGameTexture.loadFromFile("new-game.png"))
-	{
-		std::cerr << "error loading home button textures from file";
-	}
-}
 
 void Resources::loadCatSpriteSheet()
 {

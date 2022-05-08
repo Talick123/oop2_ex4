@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
+#include "macros.h"
+
 
 class Resources
 {
@@ -15,8 +17,7 @@ public:
 
 	////Access Functions
 	sf::Font* getFont();
-	sf::Texture* getUndoTexture();
-	sf::Texture* getNewGameTexture();
+	sf::Texture* getBtnTexture(Btns button);
 	sf::Texture* getCatSpriteSheet();
 	sf::SoundBuffer* getAudioClick();
 	
@@ -28,8 +29,7 @@ private:
 
 	//Load Functions
 	void loadFont();
-	void loadUndoTexture();
-	void loadNewGameTexture();
+	void loadBtnTextures();
 	void loadCatSpriteSheet();
 	void loadAudioClick();
 
@@ -39,9 +39,8 @@ private:
 	sf::Font m_font;
 
 	//Textures
-	sf::Texture m_undoTexture;
-	sf::Texture m_newGameTexture;
 	sf::Texture m_catSpriteSheet;
+	std::vector<sf::Texture> m_btnTextures;
 
 	//Audio
 	sf::SoundBuffer m_audioClick;
