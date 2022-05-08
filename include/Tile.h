@@ -13,10 +13,10 @@ public:
 	void setPosition(sf::Vector2f pos);
 	void setFillColor(sf::Color color);
 	void draw(sf::RenderWindow& window);
-	bool isContain(sf::Event event);
-	bool isContain(sf::Vector2f location);
+	bool isContain(sf::Event event) const;
+	bool isContain(sf::Vector2f location) const;
 
-	bool isBlocked();
+	bool isBlocked() const;
 	void blockTile();
 	void unBlockTile();
 	void clicked();

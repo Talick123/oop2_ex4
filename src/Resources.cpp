@@ -8,6 +8,8 @@ Resources::Resources()
 	loadBtnTextures();
 	loadCatSpriteSheet();
 	loadAudioClick();
+	loadWinPageTexture();
+	loadLosePageTexture();
 }
 
 //-----------------------------------------------------------------
@@ -51,6 +53,20 @@ sf::Texture* Resources::getCatSpriteSheet()
 
 //-----------------------------------------------------------------
 
+sf::Texture* Resources::getWinPageTexture()
+{
+	return &m_winPageTexture;
+}
+
+//-----------------------------------------------------------------
+
+sf::Texture* Resources::getLosePageTexture()
+{
+	return &m_losePageTexture;
+}
+
+//-----------------------------------------------------------------
+
 sf::SoundBuffer* Resources::getAudioClick()
 {
 	return &m_audioClick;
@@ -89,6 +105,26 @@ void Resources::loadBtnTextures()
 void Resources::loadCatSpriteSheet()
 {
 	if (!m_catSpriteSheet.loadFromFile("cat.png"))
+	{
+		std::cerr << "error loading cat textures from file";
+	}
+}
+
+//-----------------------------------------------------------------
+
+void Resources::loadWinPageTexture()
+{
+	if (!m_winPageTexture.loadFromFile("win_page.png"))
+	{
+		std::cerr << "error loading cat textures from file";
+	}
+}
+
+//-----------------------------------------------------------------
+
+void Resources::loadLosePageTexture()
+{
+	if (!m_losePageTexture.loadFromFile("lose_page.png"))
 	{
 		std::cerr << "error loading cat textures from file";
 	}

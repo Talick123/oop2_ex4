@@ -201,21 +201,21 @@ void Cat::update(float deltaTime)
 
 //-----------------------------------------------------------------
 
-bool Cat::isContain(sf::Event event)
+bool Cat::isContain(sf::Event event) const
 {
 	return m_triangle.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
 }
 
 //-----------------------------------------------------------------
 
-bool Cat::isStoped()
+bool Cat::isStoped() const
 {
 	return m_stop;
 }
 
 //-----------------------------------------------------------------
 
-sf::Vector2f Cat::getCatDirection(float deltaTime)
+sf::Vector2f Cat::getCatDirection(float deltaTime) const
 {
 	sf::Vector2f dir(0.0f, 0.0f);
 

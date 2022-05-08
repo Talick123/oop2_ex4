@@ -12,5 +12,9 @@ configure_file ("images/new_game_btn.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("images/resart_btn.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("images/undo_btn.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("images/win_page.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("images/lose_page.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
+
 #audio
 configure_file ("audio/click.wav" ${CMAKE_BINARY_DIR} COPYONLY)

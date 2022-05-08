@@ -19,6 +19,8 @@ public:
 	sf::Font* getFont();
 	sf::Texture* getBtnTexture(Btns button);
 	sf::Texture* getCatSpriteSheet();
+	sf::Texture* getWinPageTexture();
+	sf::Texture* getLosePageTexture();
 	sf::SoundBuffer* getAudioClick();
 	
 private:
@@ -30,6 +32,8 @@ private:
 	void loadFont();
 	void loadBtnTextures();
 	void loadCatSpriteSheet();
+	void loadWinPageTexture();
+	void loadLosePageTexture();
 	void loadAudioClick();
 
 	//======Members==========
@@ -39,6 +43,8 @@ private:
 
 	//Textures
 	sf::Texture m_catSpriteSheet;
+	sf::Texture m_winPageTexture;
+	sf::Texture m_losePageTexture;
 	std::vector<sf::Texture> m_btnTextures;
 
 	//Audio
