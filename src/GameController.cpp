@@ -36,7 +36,7 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 		case Page::UserWin:
 		case Page::UserLose:
 		default:
-			emmptyPageProcessEvents(event); //TODO: empty
+			emmptyPageProcessEvents(event);
 			break;
 		}
 	}
