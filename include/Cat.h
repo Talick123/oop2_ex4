@@ -28,10 +28,10 @@ public:
 	void setCurrLocation(std::pair<int, int> newDest);
 
 	void update(float deltaTime);
-	bool isContain(sf::Event event);
-	bool isStoped();
+	bool isContain(sf::Event event) const;
+	bool isStoped() const;
 private:
-	sf::Vector2f getCatDirection(float deltaTime);
+	sf::Vector2f getCatDirection(float deltaTime) const;
 	void setDirection();
 	bool checkStop();
 

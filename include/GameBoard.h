@@ -18,7 +18,6 @@ public:
 	void draw(sf::RenderWindow& window);
 	Btns handleClick(const sf::Event& event, GameStatus &status);
 	void handleHover(sf::Vector2f location);
-	void resetMoves();
 	void update(float deltaTime);
 	void undo();
 	void resetLevel();
@@ -26,7 +25,7 @@ public:
 private:	
 	void moveCat(GameStatus& status);
 	void placeCat();
-	bool isCatHere(sf::Event event);
+	bool isCatHere(sf::Event event) const;
 	void initVisited(bool visited[][SIZE]);
 
 private:

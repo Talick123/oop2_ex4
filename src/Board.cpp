@@ -85,7 +85,7 @@ void Board::handleHover(sf::Vector2f location)
 	}
 }
 
-Tile& Board::at(int row, int col) //maybe make this const so they cant change it (const on return)
+Tile& Board::at(int row, int col)
 {
 	return m_tiles[row][col];
 }

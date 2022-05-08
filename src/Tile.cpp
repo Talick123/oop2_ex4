@@ -21,17 +21,17 @@ void Tile::draw(sf::RenderWindow& window)
 	window.draw(m_tile);
 }
 
-bool Tile::isContain(sf::Event event)
+bool Tile::isContain(sf::Event event) const
 {
 	return m_tile.getGlobalBounds().contains(event.mouseButton.x, event.mouseButton.y);
 }
 
-bool Tile::isContain(sf::Vector2f location)
+bool Tile::isContain(sf::Vector2f location) const
 {
 	return m_tile.getGlobalBounds().contains(location);
 }
 
-bool Tile::isBlocked()
+bool Tile::isBlocked() const
 {
 	return m_blocked;
 }

@@ -90,7 +90,7 @@ void GameBoard::placeCat()
 
 //-----------------------------------------------------------------
 
-bool GameBoard::isCatHere(sf::Event event)
+bool GameBoard::isCatHere(sf::Event event) const
 {
 	return m_cat.isContain(event);
 }
