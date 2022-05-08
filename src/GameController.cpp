@@ -1,9 +1,8 @@
 #include "GameController.h"
 
 
-
 GameController::GameController()
-	: m_currPage(Page::GameBoard), m_numOfLevelsComplete(0)
+	: m_currPage(Page::GameBoard), m_numOfLevelsComplete(0), m_playerStatus(GameStatus::Playing)
 {
 	initPages();
 }
@@ -42,7 +41,6 @@ void GameController::processEvents(sf::RenderWindow &window, GameBoard &gameBoar
 			break;
 		}
 	}
-
 }
 
 void GameController::gameBoardProcesEvents(sf::Event& event, sf::RenderWindow& window, GameBoard& gameBoard)
@@ -51,37 +49,15 @@ void GameController::gameBoardProcesEvents(sf::Event& event, sf::RenderWindow& w
 	{
 	case sf::Event::MouseButtonReleased:
 	{
-		Btns clicked = gameBoard.handleClick(event);
-		switch (clicked)
-		{
-		case Btns::NewGame:
-			startNewLevel(gameBoard);
-			break;
-		case Btns::Undo:
-			gameBoard.undo();
-			break;
-		case Btns::Reset:
-			gameBoard.resetLevel();
-			break;
-		default:
-			break;
-		}
+		Btns clicked = gameBoard.handleClick(event , m_playerStatus);
+		checkBtnClick(clicked, gameBoard);
+		break;
 	}
 	case sf::Event::MouseMoved:
 	{
 		sf::Vector2f location = window.mapPixelToCoords(
 			{ event.mouseMove.x, event.mouseMove.y });
 			gameBoard.handleHover(location);
-		break;
-	}
-	case sf::Event::KeyReleased:
-	{
-		if (event.key.code == sf::Keyboard::W)
-		{
-			updateWin(gameBoard);
-		}
-		else if (event.key.code == sf::Keyboard::L)
-			updateLose(gameBoard);
 		break;
 	}
 	default:
@@ -95,14 +71,13 @@ void GameController::emmptyPageProcessEvents(sf::Event& event)
 		if (event.key.code == sf::Keyboard::Space)
 		{
 			m_currPage = Page::GameBoard;
-			//create new level or restart level
+			m_playerStatus = GameStatus::Playing;
 		}
 }
 
 void GameController::update(GameBoard& gameBoard)
 {
 	sf::Time deltaTime = m_timer.restart();
-
 	gameBoard.update(deltaTime.asSeconds());
 }
 
@@ -129,7 +104,6 @@ void GameController::drawCurrPage(sf::RenderWindow& window, GameBoard& gameBoard
 	default:
 		break;
 	}
-
 }
 
 void GameController::initPages()
@@ -145,24 +119,56 @@ void GameController::initPages()
 
 void GameController::updateWin(GameBoard& gameBoard)
 {
-	//gameBoard.resetMoves();
 	m_currPage = Page::UserWin;
 	m_numOfLevelsComplete += 1;
 	startNewLevel(gameBoard);
-
-	//create new level or restart level
 }
 
 void GameController::updateLose(GameBoard& gameBoard)
 {
 	gameBoard.resetLevel();
 	m_currPage = Page::UserLose;
-	//create new level or restart level
 }
 
 void GameController::startNewLevel(GameBoard& gameBoard)
 {
 	gameBoard = GameBoard(generateLevelDifficulty());
+}
+
+void GameController::changeGameStatus(GameBoard &gameBoard)
+{
+	switch (m_playerStatus)
+	{
+	case GameStatus::Won:
+		updateWin(gameBoard);
+		break;
+	case GameStatus::Lose:
+		updateLose(gameBoard);
+		break;
+	case GameStatus::Playing:
+	default:
+		break;
+	}
+}
+
+void GameController::checkBtnClick(Btns clicked, GameBoard & gameBoard)
+{
+	switch (clicked)
+	{
+	case Btns::NewGame:
+		startNewLevel(gameBoard);
+		break;
+	case Btns::Undo:
+		gameBoard.undo();
+		break;
+	case Btns::Reset:
+		gameBoard.resetLevel();
+		break;
+	case Btns::None:
+		changeGameStatus(gameBoard);
+	default:
+		break;
+	}
 }
 
 unsigned int GameController::generateLevelDifficulty() const

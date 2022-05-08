@@ -38,3 +38,12 @@ enum class Btns {NewGame, Undo, Reset, None};
 
 //for bfs
 const std::pair<int, int> NO_PARENT{ -1,-1 };
+
+
+
+enum class GameStatus
+{
+	Playing,
+	Won,
+	Lose
+};

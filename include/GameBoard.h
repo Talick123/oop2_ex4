@@ -17,7 +17,7 @@ public:
 	//GameBoard();
 	GameBoard(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
-	Btns handleClick(const sf::Event& event);
+	Btns handleClick(const sf::Event& event, GameStatus &status);
 	void handleHover(sf::Vector2f location);
 
 	void resetMoves();
@@ -26,7 +26,7 @@ public:
 	void undo();
 	void resetLevel();
 private:	
-	void moveCat();
+	void moveCat(GameStatus& status);
 	void placeCat();
 	bool isCatHere(sf::Event event);
 

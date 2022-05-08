@@ -25,12 +25,12 @@ void GameBoard::draw(sf::RenderWindow& window)
 
 //-----------------------------------------------------------------
 
-Btns GameBoard::handleClick(const sf::Event& event)
+Btns GameBoard::handleClick(const sf::Event& event, GameStatus &status)
 {
 	Tile* tile = NULL;
 	if (!isCatHere(event) && m_cat.isStoped() && m_board.handleClick(event, tile))
 	{
-		moveCat();
+		moveCat(status);
 		m_gameMoves.emplace_back(m_cat.getLocation(), tile);
 		//m_numOfMoves++;
 		m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1);
@@ -48,7 +48,7 @@ void GameBoard::handleHover(sf::Vector2f location)
 
 //-----------------------------------------------------------------
 
-void GameBoard::moveCat()
+void GameBoard::moveCat(GameStatus &status)
 {
 	bool visited[SIZE][SIZE];
 	memset(visited, false, sizeof visited);
@@ -60,11 +60,13 @@ void GameBoard::moveCat()
 	{
 		//Tali: Cat won, what to do with this
 		std::cout << "CAT WON\n";
+		status = GameStatus::Lose;
 	}
 	catch (std::domain_error& e)
 	{
 		//Tali: Cat is blocked in completely, user won, what to do
 		std::cout << "USER WON\n";
+		status = GameStatus::Won;
 	}
 }
 
