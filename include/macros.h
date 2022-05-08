@@ -1,10 +1,10 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <utility>
-
+#include <string>
 
 //Window
+const std::string GAME_TITLE = "Circle the Cat";
 const int WINDOW_HEIGHT = 900;
 const int WINDOW_LENGTH = 1450;
 
@@ -30,16 +30,15 @@ const int D_VEC_COL_E[] = {  0, 1,  0, -1, -1, -1 };
 const int D_VEC_ROW_O[] = { 1, 0, -1,  0,  1, -1 };
 const int D_VEC_COL_O[] = { 0, 1,  0, -1,  1,  1 };
 
+
 const int NUM_OF_BTNS = 3;
 enum class Btns {NewGame, Undo, Reset, None};
-
-// colors:
 
 
 //for bfs
 const std::pair<int, int> NO_PARENT{ -1,-1 };
 
-
+const int MAX_BLOCK_TILES = 14;
 
 enum class GameStatus
 {

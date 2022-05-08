@@ -15,13 +15,12 @@ public:
 	~Resources();
 	static Resources& instance();
 
-	////Access Functions
+	//Access Functions
 	sf::Font* getFont();
 	sf::Texture* getBtnTexture(Btns button);
 	sf::Texture* getCatSpriteSheet();
 	sf::SoundBuffer* getAudioClick();
 	
-
 private:
 	Resources();
 	Resources(const Resources&) = default;

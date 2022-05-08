@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <map>
 #include "macros.h"
+#include "Resources.h"
 
 #include "Audio.h"
 
@@ -17,7 +17,6 @@ public:
 	bool isContain(sf::Vector2f location);
 
 	bool isBlocked();
-	//Noga: I know we can create function and send to it bool argument but i think its more understandable like that (this?),  yes? no? are you with me?
 	void blockTile();
 	void unBlockTile();
 	void clicked();
@@ -25,5 +24,4 @@ private:
 	sf::CircleShape m_tile;
 	bool m_blocked;
 	Audio m_audio;
-	
 };

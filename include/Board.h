@@ -9,7 +9,6 @@
 
 class Board {
 public:
-	Board();
 	Board(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
 	bool handleClick(const sf::Event& event, Tile*& tile_clicked);

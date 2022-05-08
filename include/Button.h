@@ -7,9 +7,8 @@
 
 class Button {
 public:
-	Button() {};
 	Button(Btns type);
-	virtual ~Button() {};
+	~Button() {};
 	void draw(sf::RenderWindow& window);
 
 	//get

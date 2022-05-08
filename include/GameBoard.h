@@ -14,22 +14,19 @@
 
 class GameBoard {
 public:
-	//GameBoard();
 	GameBoard(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
 	Btns handleClick(const sf::Event& event, GameStatus &status);
 	void handleHover(sf::Vector2f location);
-
 	void resetMoves();
 	void update(float deltaTime);
-
 	void undo();
 	void resetLevel();
+
 private:	
 	void moveCat(GameStatus& status);
 	void placeCat();
 	bool isCatHere(sf::Event event);
-
 	void initVisited(bool visited[][SIZE]);
 
 private:

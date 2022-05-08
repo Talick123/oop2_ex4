@@ -1,15 +1,10 @@
 #include "GameBoard.h"
 
-//GameBoard::GameBoard()
-//	:m_board(10), m_cat(std::pair<int, int>(5, 4)), m_numOfMoves(0)
-//{
-//	m_dataDisplay.setNumOfMovesText(m_numOfMoves); // 0 = num of moves
-//}
 
 GameBoard::GameBoard(int numOfBlockedTiles)
-	:m_board(numOfBlockedTiles), m_cat() //, m_numOfMoves(0)
+	:m_board(numOfBlockedTiles), m_cat()
 {
-	placeCat(); //Tali: would like to change to initCatLocation or something like that
+	placeCat();
 	m_gameMoves.emplace_back(m_cat.getLocation(),&m_board.at(m_cat.getLocation().first, m_cat.getLocation().second));
 	m_dataDisplay.setNumOfMovesText(m_gameMoves.size() - 1);
 }
@@ -32,7 +27,6 @@ Btns GameBoard::handleClick(const sf::Event& event, GameStatus &status)
 	{
 		moveCat(status);
 		m_gameMoves.emplace_back(m_cat.getLocation(), tile);
-		//m_numOfMoves++;
 		m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1);
 		return Btns::None;
 	}
@@ -58,14 +52,10 @@ void GameBoard::moveCat(GameStatus &status)
 	}
 	catch (std::out_of_range& e)
 	{
-		//Tali: Cat won, what to do with this
-		std::cout << "CAT WON\n";
 		status = GameStatus::Lose;
 	}
 	catch (std::domain_error& e)
 	{
-		//Tali: Cat is blocked in completely, user won, what to do
-		std::cout << "USER WON\n";
 		status = GameStatus::Won;
 	}
 }
@@ -78,7 +68,6 @@ void GameBoard::initVisited(bool visited[][SIZE])
 		for (int j = 0; j < SIZE; j++)
 			if (m_board.at(i, j).isBlocked())
 				visited[i][j] = true;
-
 }
 
 //-----------------------------------------------------------------
@@ -92,24 +81,18 @@ void GameBoard::placeCat()
 
 		if (!m_board.at(rRow, rCol).isBlocked()) 
 		{
-			m_cat.setLocation({ rRow, rCol }); //Tali: line needed?
+			m_cat.setLocation({ rRow, rCol });
 			m_cat.setCurrLocation({ rRow, rCol });
 			counter++; //increasing the counter only when a new cell is set to true
 		}
 	}
 }
+
 //-----------------------------------------------------------------
 
 bool GameBoard::isCatHere(sf::Event event)
 {
 	return m_cat.isContain(event);
-}
-//-----------------------------------------------------------------
-
-//MAYBE REMOVE
-void GameBoard::resetMoves()
-{
-	m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1); //TODO: ?
 }
 
 //-----------------------------------------------------------------
@@ -130,7 +113,6 @@ void GameBoard::undo()
 
 	m_gameMoves.pop_back();
 	m_cat.setCurrLocation(m_gameMoves.back().first);
-	//m_numOfMoves--;
 	m_dataDisplay.updateNumOfMovesString(m_gameMoves.size()- 1);
 }
 
@@ -146,4 +128,3 @@ void GameBoard::resetLevel()
 	}
 	m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1);
 }
-

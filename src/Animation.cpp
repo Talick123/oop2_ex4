@@ -8,7 +8,6 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switch
 	m_switchTime = switchTime;
 
 	m_totalTime = 0.0f;
-
 	m_currentImage.x = 0;
 
 	m_uvRect.width = texture->getSize().x / float(imageCount.x);

@@ -10,9 +10,8 @@ GameController::GameController()
 void GameController::startGame()
 {
 	srand(time(NULL));
-	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), "Circle the Cat", sf::Style::Close);
-	GameBoard gameBoard(14); //TODO: const
-	//GameBoard gameBoard(25); 
+	sf::RenderWindow window(sf::VideoMode(WINDOW_LENGTH, WINDOW_HEIGHT), GAME_TITLE, sf::Style::Close);
+	GameBoard gameBoard(MAX_BLOCK_TILES);
 
 	while (window.isOpen())
 	{
@@ -166,6 +165,7 @@ void GameController::checkBtnClick(Btns clicked, GameBoard & gameBoard)
 		break;
 	case Btns::None:
 		changeGameStatus(gameBoard);
+		break;
 	default:
 		break;
 	}

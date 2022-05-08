@@ -1,9 +1,11 @@
 #pragma once
+
+#include "macros.h"
+#include <time.h>
+
 #include <SFML/Graphics.hpp>
 
 #include "GameBoard.h"
-#include "macros.h"
-#include <time.h>
 
 class GameController {
 public:
@@ -24,7 +26,6 @@ private:
 
 	//set
 	void initPages();
-
 	void updateWin(GameBoard& gameBoard);
 	void updateLose(GameBoard& gameBoard);
 	void startNewLevel(GameBoard &gameBoard);
@@ -47,7 +48,7 @@ private:
 	unsigned int m_numOfLevelsComplete;
 
 	sf::RectangleShape m_levelComplete;
-	sf::RectangleShape m_levelLost; //Noga: ?
+	sf::RectangleShape m_levelLost;
 
 	sf::Clock m_timer;
 };
