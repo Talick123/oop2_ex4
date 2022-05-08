@@ -174,9 +174,9 @@ void GameController::checkBtnClick(Btns clicked, GameBoard & gameBoard)
 
 unsigned int GameController::generateLevelDifficulty() const
 {
-	int x = 14 <= m_numOfLevelsComplete > 0 ? 4 : 14 - m_numOfLevelsComplete;
+	int x = MAX_BLOCK_TILES <= m_numOfLevelsComplete > 0 ? MIN_BLOCK_TILES : MAX_BLOCK_TILES - m_numOfLevelsComplete;
 	int r = (x) + rand() % 3;
-	return r < 4 ? 4 : r;
+	return r < MIN_BLOCK_TILES ? MIN_BLOCK_TILES : r;
 }
 
 void GameController::setGameIcon(sf::RenderWindow& window)

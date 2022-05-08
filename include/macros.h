@@ -39,6 +39,7 @@ enum class Btns {NewGame, Undo, Reset, None};
 const std::pair<int, int> NO_PARENT{ -1,-1 };
 
 const int MAX_BLOCK_TILES = 14;
+const int MIN_BLOCK_TILES = 4;
 
 enum class GameStatus
 {

@@ -4,7 +4,7 @@ const int DEFAULT_LEVEL = 10;
 
 
 Board::Board(int numOfBlockedTiles)
-	: m_tiles(11, std::vector<Tile>(11))
+	: m_tiles(SIZE, std::vector<Tile>(SIZE))
 {
 	initBoard();
 	randomizeLevel(numOfBlockedTiles);
@@ -14,9 +14,9 @@ void Board::initBoard()
 {
 	float x, y;
 
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		for (int j = 0; j < 11; j++)
+		for (int j = 0; j < SIZE; j++)
 		{
 			x = (i % 2 == 0) ? TOTAL_TILE_SIZE * j : TOTAL_TILE_SIZE * j + TILE_RADIUS;
 			y = TOTAL_TILE_SIZE * i;
@@ -30,8 +30,8 @@ void Board::randomizeLevel(int numOfBlockedTiles)
 {
 	int counter = 0;
 	while (counter < numOfBlockedTiles) { //looping while 3 distinct cells are not set to true
-		int rRow = rand() % 11;
-		int rCol = rand() % 11;
+		int rRow = rand() % SIZE;
+		int rCol = rand() % SIZE;
 
 		if (!m_tiles[rRow][rCol].isBlocked()) {
 			m_tiles[rRow][rCol].blockTile();
@@ -42,8 +42,8 @@ void Board::randomizeLevel(int numOfBlockedTiles)
 
 void Board::draw(sf::RenderWindow& window)
 {
-	for (int i = 0; i < 11; i++)
-		for (int j = 0; j < 11; j++)
+	for (int i = 0; i < SIZE; i++)
+		for (int j = 0; j < SIZE; j++)
 		{
 			m_tiles[i][j].draw(window);
 		}
@@ -51,8 +51,8 @@ void Board::draw(sf::RenderWindow& window)
 
 bool Board::handleClick(const sf::Event& event, Tile*& tile_clicked)
 {
-	for (int i = 0; i < 11; i++)
-		for (int j = 0; j < 11; j++)
+	for (int i = 0; i < SIZE; i++)
+		for (int j = 0; j < SIZE; j++)
 		{
 			if (m_tiles[i][j].isContain(event))
 			{
@@ -69,9 +69,9 @@ bool Board::handleClick(const sf::Event& event, Tile*& tile_clicked)
 
 void Board::handleHover(sf::Vector2f location)
 {
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		for (int j = 0; j < 11; j++)
+		for (int j = 0; j < SIZE; j++)
 		{
 			if (!at(i, j).isBlocked() && at(i,j).isContain(location))
 			{
