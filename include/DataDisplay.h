@@ -17,7 +17,9 @@ public:
 	void updateNumOfMovesString(unsigned int moves);
 private:
 	void setBtns();
+	void setBackground();
 private:
 	sf::Text m_numOfMovesTitleText;
+	sf::RectangleShape m_background;
 	std::vector<Button> m_buttons;
 };
