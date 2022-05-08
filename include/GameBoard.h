@@ -14,22 +14,19 @@
 
 class GameBoard {
 public:
-	//GameBoard();
 	GameBoard(int numOfBlockedTiles);
 	void draw(sf::RenderWindow& window);
 	Btns handleClick(const sf::Event& event, GameStatus &status);
 	void handleHover(sf::Vector2f location);
-
 	void resetMoves();
 	void update(float deltaTime);
-
 	void undo();
 	void resetLevel();
+
 private:	
 	void moveCat(GameStatus& status);
 	void placeCat();
 	bool isCatHere(sf::Event event);
-
 	void initVisited(bool visited[][SIZE]);
 
 private:
@@ -37,6 +34,4 @@ private:
 	Cat m_cat;
 	DataDisplay m_dataDisplay;
 	std::vector<std::pair<std::pair<int, int>, Tile*>> m_gameMoves;
-
-	//int m_numOfMoves; //Tali: do we need num of moves? m_gameMoves.size() - 1 will tell us how much 
 };

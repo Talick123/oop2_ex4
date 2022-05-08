@@ -13,15 +13,11 @@ public:
 	DataDisplay();
 	void draw(sf::RenderWindow& window);
 	Btns handleClick(sf::Event event);
-
 	void setNumOfMovesText(unsigned int moves);
 	void updateNumOfMovesString(unsigned int moves);
-	
-
 private:
 	void setBtns();
 private:
 	sf::Text m_numOfMovesTitleText;
-
 	std::vector<Button> m_buttons;
 };

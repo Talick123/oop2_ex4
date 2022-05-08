@@ -1,8 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
 #include <utility>
-
 
 //Window
 const int WINDOW_HEIGHT = 900;
@@ -30,10 +28,9 @@ const int D_VEC_COL_E[] = {  0, 1,  0, -1, -1, -1 };
 const int D_VEC_ROW_O[] = { 1, 0, -1,  0,  1, -1 };
 const int D_VEC_COL_O[] = { 0, 1,  0, -1,  1,  1 };
 
+
 const int NUM_OF_BTNS = 3;
 enum class Btns {NewGame, Undo, Reset, None};
-
-// colors:
 
 
 //for bfs
