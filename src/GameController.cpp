@@ -109,11 +109,9 @@ void GameController::drawCurrPage(sf::RenderWindow& window, GameBoard& gameBoard
 void GameController::initPages()
 {
 	m_levelComplete = sf::RectangleShape(sf::Vector2f(float(WINDOW_LENGTH), float(WINDOW_HEIGHT)));
-	//m_levelComplete.setFillColor(sf::Color(179, 255, 179));
 	m_levelComplete.setTexture(Resources::instance().getWinPageTexture());
 
 	m_levelLost = sf::RectangleShape(sf::Vector2f(float(WINDOW_LENGTH), float(WINDOW_HEIGHT)));
-	//m_levelLost.setFillColor(sf::Color(102, 0, 0));
 	m_levelLost.setTexture(Resources::instance().getLosePageTexture());
 }
 
