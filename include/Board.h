@@ -18,5 +18,4 @@ private:
 	void initBoard();
 	void randomizeLevel(int numOfBlockedTiles);
 	std::vector<std::vector<Tile>> m_tiles;
-	
 };
