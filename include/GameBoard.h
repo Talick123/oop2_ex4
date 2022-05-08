@@ -38,5 +38,5 @@ private:
 	DataDisplay m_dataDisplay;
 	std::vector<std::pair<std::pair<int, int>, Tile*>> m_gameMoves;
 
-	int m_numOfMoves; //Tali: do we need num of moves? m_gameMoves.size() - 1 will tell us how much 
+	//int m_numOfMoves; //Tali: do we need num of moves? m_gameMoves.size() - 1 will tell us how much 
 };

@@ -155,7 +155,7 @@ void GameController::updateWin(GameBoard& gameBoard)
 
 void GameController::updateLose(GameBoard& gameBoard)
 {
-	gameBoard.resetMoves();
+	gameBoard.resetLevel();
 	m_currPage = Page::UserLose;
 	//create new level or restart level
 }

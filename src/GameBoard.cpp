@@ -7,11 +7,11 @@
 //}
 
 GameBoard::GameBoard(int numOfBlockedTiles)
-	:m_board(numOfBlockedTiles), m_cat() , m_numOfMoves(0)
+	:m_board(numOfBlockedTiles), m_cat() //, m_numOfMoves(0)
 {
 	placeCat(); //Tali: would like to change to initCatLocation or something like that
-	m_dataDisplay.setNumOfMovesText(m_numOfMoves);
 	m_gameMoves.emplace_back(m_cat.getLocation(),&m_board.at(m_cat.getLocation().first, m_cat.getLocation().second));
+	m_dataDisplay.setNumOfMovesText(m_gameMoves.size() - 1);
 }
 
 //-----------------------------------------------------------------
@@ -32,8 +32,8 @@ Btns GameBoard::handleClick(const sf::Event& event)
 	{
 		moveCat();
 		m_gameMoves.emplace_back(m_cat.getLocation(), tile);
-		m_numOfMoves++;
-		m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
+		//m_numOfMoves++;
+		m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1);
 		return Btns::None;
 	}
 	return m_dataDisplay.handleClick(event); 
@@ -104,10 +104,10 @@ bool GameBoard::isCatHere(sf::Event event)
 }
 //-----------------------------------------------------------------
 
+//MAYBE REMOVE
 void GameBoard::resetMoves()
 {
-	m_numOfMoves = 0;
-	m_dataDisplay.updateNumOfMovesString(0); //TODO: ?
+	m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1); //TODO: ?
 }
 
 //-----------------------------------------------------------------
@@ -128,8 +128,8 @@ void GameBoard::undo()
 
 	m_gameMoves.pop_back();
 	m_cat.setCurrLocation(m_gameMoves.back().first);
-	m_numOfMoves--;
-	m_dataDisplay.updateNumOfMovesString(m_numOfMoves);
+	//m_numOfMoves--;
+	m_dataDisplay.updateNumOfMovesString(m_gameMoves.size()- 1);
 }
 
 //-----------------------------------------------------------------
@@ -142,6 +142,6 @@ void GameBoard::resetLevel()
 		m_gameMoves.back().second->unBlockTile();
 		m_gameMoves.pop_back();
 	}
-	resetMoves();
+	m_dataDisplay.updateNumOfMovesString(m_gameMoves.size() - 1);
 }
 
