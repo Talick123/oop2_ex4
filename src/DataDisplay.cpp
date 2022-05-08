@@ -1,7 +1,7 @@
 #include "DataDisplay.h"
 
 DataDisplay::DataDisplay()
-	: m_background(sf::Vector2f(380, 900))
+	: m_background(sf::Vector2f(DATA_BKGRND_LENGTH, WINDOW_HEIGHT))
 {
 	setBtns();
 	setBackground();

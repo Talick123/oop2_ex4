@@ -19,6 +19,8 @@ const float BOARD_OFFSET_Y = (WINDOW_HEIGHT - TOTAL_TILE_SIZE * SIZE - PADDING) 
 const int BOARD_AREA_LENGTH = WINDOW_LENGTH * (0.7);
 const int BOARD_OFFSET_X = (BOARD_AREA_LENGTH - (TOTAL_TILE_SIZE * SIZE + TILE_RADIUS))/2;
 
+//DataDisplay
+const int DATA_BKGRND_LENGTH = 380;
 
 //Direction Vectors
 
