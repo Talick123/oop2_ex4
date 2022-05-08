@@ -8,6 +8,7 @@ General Description of the Assignment:
     the cat by clicking and blocking out tiles. If the cat reaches the edge, the user loses.
     If the user is able to enclose the cat such that it can not continue to move, then the 
     user wins.
+    during the game the user can undo moves, reset level and ask for new game.
     
 Design:
     
@@ -15,7 +16,7 @@ Design:
             Tile, Resources
 
     Animation:
-        - responsible for the cats animation on the board
+        - responsible for the animation on the game
     Audio:
         - deals with audio used during game
     Board:
@@ -68,7 +69,7 @@ Known Bugs:
 
 Other General Notes:
     - game creates an infinite number of levels with number of blocked tiles being 
-    between 4 and 14 based on difficulty
+    between 4 and 14 based on difficulty (claculate the difficulty by the number of games the user won)
     - The controller divides the game loop into three distinct functions, one that deals
     with the game play, one that updates the required data, one that renders the game (via SFML)
     - when the BFS algorithm fails at finding the shortest path to the edge of the game board,
